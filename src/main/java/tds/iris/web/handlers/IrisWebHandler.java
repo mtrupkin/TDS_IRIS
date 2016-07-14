@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import AIR.Common.Web.TDSReplyCode;
 import AIR.Common.data.ResponseData;
+import tds.blackbox.ContentRequestAccommodation;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentHelper;
 import tds.iris.web.data.ContentRequest;
@@ -63,6 +64,21 @@ public class IrisWebHandler extends BaseContentRendererController
     ContentRequest contentRequest = ContentRequest.getContentRequest (modifyPostData (request));
     ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup (contentRequest);
 
+    AccLookup accommodations = new AccLookup ();
+
+    // add any accommodations from request
+    if (contentRequest.getAccommodations () != null) {
+      for (ContentRequestAccommodation acc : contentRequest.getAccommodations ()) {
+        if (acc != null && !org.apache.commons.lang.StringUtils.isEmpty (acc.getType ())) {
+          for (String code : acc.getCodes ()) {
+            if (!org.apache.commons.lang.StringUtils.isEmpty (code)) {
+              accommodations.add (acc.getType (), code);
+            }
+          }
+        }
+      }
+    }
+
     // Shiva: This is where our implementation differs from .NET.
     // In .NET the IRIS method of populating PageLayout is different than the
     // student way - the controllers are different.
@@ -72,7 +88,7 @@ public class IrisWebHandler extends BaseContentRendererController
     if (!StringUtils.isEmpty (contentRequest.getLayout ()))
       itemRenderGroup.setLayout (contentRequest.getLayout ());
 
-    renderGroup (itemRenderGroup, new AccLookup (), response);
+    renderGroup (itemRenderGroup, accommodations, response);
   }
 
   // Controller starts here
