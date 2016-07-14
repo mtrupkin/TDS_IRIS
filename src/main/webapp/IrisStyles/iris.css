@@ -1,7 +1,13 @@
-div#topBar {
+/*div#topBar {
+	display: none;
+}*/
+ul#studentControls{
+    visibility: hidden;
+}
+div#infoBar{
 	display: none;
 }
 div#contents, 
 div#contents .layout_wai {
-    top: 0px;
+    top: 70px;
 }
