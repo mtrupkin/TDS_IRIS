@@ -6,12 +6,17 @@ This code implements the XDM API for use within item preview app.
 
     // set read only
     CM.setReadOnly(true);
+    CM.enableAccessibility();
 
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
 
     // setup cross domain api 
     XDM.init(window);
+
+    Blackbox.showButton('btnCalculator', '', function() {
+        showSelectedTTS();
+    });
 
     function getItemId(item) {
         return "I-" + item.bankKey + "-" + item.itemKey;
@@ -91,31 +96,25 @@ This code implements the XDM API for use within item preview app.
         var itemMap = getItemMap(content.items);
         var result = getExistingPage(itemMap);
 
+        //if the page is already loaded we want to force a reload because the accommodations may have changed.
         if (result.page) {
             // show the page
             TDS.Dialog.hideProgress();
-            result.page.show();
-
-            // set the responses for the items
-            result.itemPairs.forEach(function (pair) {
-                var loaded = pair.loaded,
-                    requested = pair.requested;
-
-                loaded.setResponse(requested.value);
-                requested.label && loaded.setQuestionLabel(requested.label);
-            });
-
-            // nothing left to do, just resolve the deferred now
-            deferred.resolve();
-        } else {
-            page = CM.createPage(content);
-            page.render();
-            page.once('loaded', function () {
-                TDS.Dialog.hideProgress();
-                page.show();
-                deferred.resolve();
-            });
+            ContentManager.removePage(result.page);
+            // If there is a word list loaded clear the cached words because they may have changed.
+            if(window.WordListPanel){
+                window.WordListPanel.clearCache();
+            }
         }
+
+        page = CM.createPage(content);
+
+        page.render();
+        page.once('loaded', function () {
+            TDS.Dialog.hideProgress();
+            page.show();
+            deferred.resolve();
+        });
 
         return deferred.promise();
     }
@@ -218,17 +217,39 @@ This code implements the XDM API for use within item preview app.
         return deferred.promise();
     }
 
+    //function that is passed to Blackbox.changeAccommodations to modify the accommodations
+    //in our case we just want to clear out any accommodations that are set.
+    function clearAccommodations(accoms) {
+        accoms.clear()
+    }
+
+    //parses any accommodations from the token, and sets them on the Blackbox.
+    function setAccommodations(token) {
+        var parsed = JSON.parse(token);
+        //Call changeAccommodations once to reset all accommodations to their default values
+        Blackbox.changeAccommodations(clearAccommodations);
+        if(parsed.hasOwnProperty('accommodations')) {
+            Blackbox.setAccommodations(parsed['accommodations']);
+            //Call changeAccommodations a second time to apply the new accommodations that were set
+            //by setAccommodations
+            Blackbox.changeAccommodations(function(accoms){})
+        }
+    }
+
     function loadToken(vendorId, token) {
         TDS.Dialog.showProgress();
         var url = location.href + '/Pages/API/content/load?id=' + vendorId;
+        setAccommodations(token);
         return $.post(url, token, null, 'text').then(function (data) {
-            return loadContent(data);
+            response = loadContent(data);
+            return response;
         });
     }
 
     function loadGroupedContentToken(vendorId, token) {
         TDS.Dialog.showProgress();
         var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
+        setAccommodations(token);
         return $.post(url, token, null, 'text').then(function (data) {
             return loadGroupedContent(data);
         });
