@@ -14,10 +14,6 @@ This code implements the XDM API for use within item preview app.
     // setup cross domain api 
     XDM.init(window);
 
-    Blackbox.showButton('btnCalculator', '', function() {
-        showSelectedTTS();
-    });
-
     function getItemId(item) {
         return "I-" + item.bankKey + "-" + item.itemKey;
     }
