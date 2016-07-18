@@ -11,6 +11,37 @@ This code implements the XDM API for use within item preview app.
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
 
+    // Functions that are used by toolbar buttons
+
+    //Calculator
+    var calculatorBtn = function(ev) {
+        var currentPage = ContentManager.getCurrentPage();
+        if (currentPage) {
+            Calculator.toggle();
+        }
+    };
+
+    //Global Notes
+    var globalNotesBtn = function(ev) {
+        var currentPage = ContentManager.getCurrentPage();
+        if (currentPage && TDS.Notes) {
+            TDS.Notes.open();
+        }
+    };
+
+    //Masking
+    var showMask = function(ev) {
+        var currentPage = ContentManager.getCurrentPage();
+        if (currentPage) {
+            var pageId = currentPage.id;
+            var pDom = document.getElementById(pageId);
+            /*TDS.Mask.create(pDom, pageId);
+            TDS.Mask.on(); */
+            Masking.toggle();
+        }
+    };
+
+
     // setup cross domain api 
     XDM.init(window);
 
@@ -112,6 +143,9 @@ This code implements the XDM API for use within item preview app.
             deferred.resolve();
         });
 
+        Blackbox.showButton('btnMask', showMask, true);
+        Blackbox.showButton('btnCalculator', calculatorBtn, true);
+        Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
         return deferred.promise();
     }
 
