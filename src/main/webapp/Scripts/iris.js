@@ -4,10 +4,6 @@ This code implements the XDM API for use within item preview app.
 
 (function (XDM, CM) {
 
-    // set read only
-    //CM.setReadOnly(true);
-    //CM.enableAccessibility();
-
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
 
@@ -34,6 +30,14 @@ This code implements the XDM API for use within item preview app.
         var currentPage = ContentManager.getCurrentPage();
         if (currentPage) {
             Masking.toggle();
+        }
+    };
+
+    //Dictionary
+    var dictionaryBtn = function(ev) {
+      var currentPage = ContentManager.getCurrentPage();
+        if(currentPage) {
+            console.log("Dictionary goes here");
         }
     };
 
@@ -142,6 +146,7 @@ This code implements the XDM API for use within item preview app.
         Blackbox.showButton('btnMask', showMask, true);
         Blackbox.showButton('btnCalculator', calculatorBtn, true);
         Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
+        Blackbox.showButton('btnDictionary', dictionaryBtn, true);
         return deferred.promise();
     }
 
