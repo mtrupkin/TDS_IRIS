@@ -5,8 +5,8 @@ This code implements the XDM API for use within item preview app.
 (function (XDM, CM) {
 
     // set read only
-    CM.setReadOnly(true);
-    CM.enableAccessibility();
+    //CM.setReadOnly(true);
+    //CM.enableAccessibility();
 
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
@@ -33,10 +33,6 @@ This code implements the XDM API for use within item preview app.
     var showMask = function(ev) {
         var currentPage = ContentManager.getCurrentPage();
         if (currentPage) {
-            var pageId = currentPage.id;
-            var pDom = document.getElementById(pageId);
-            /*TDS.Mask.create(pDom, pageId);
-            TDS.Mask.on(); */
             Masking.toggle();
         }
     };
