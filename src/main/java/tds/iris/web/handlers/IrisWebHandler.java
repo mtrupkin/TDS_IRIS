@@ -62,8 +62,6 @@ public class IrisWebHandler extends BaseContentRendererController
   public void loadContentRequest (HttpServletRequest request, HttpServletResponse response) throws Exception {
 
     ContentRequest contentRequest = ContentRequest.getContentRequest (modifyPostData (request));
-    ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroup (contentRequest);
-
     AccLookup accommodations = new AccLookup ();
 
     // add any accommodations from request
@@ -79,6 +77,7 @@ public class IrisWebHandler extends BaseContentRendererController
       }
     }
 
+    ItemRenderGroup itemRenderGroup = _contentHelper.loadRenderGroupAcc (contentRequest, accommodations);
     // Shiva: This is where our implementation differs from .NET.
     // In .NET the IRIS method of populating PageLayout is different than the
     // student way - the controllers are different.
