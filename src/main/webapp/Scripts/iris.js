@@ -33,11 +33,10 @@ This code implements the XDM API for use within item preview app.
         }
     };
 
-    //Dictionary
     var dictionaryBtn = function(ev) {
-      var currentPage = ContentManager.getCurrentPage();
-        if(currentPage) {
-            console.log("Dictionary goes here");
+        var currentPage = ContentManager.getCurrentPage();
+        if (currentPage) {
+            Dictionary.toggle();
         }
     };
 
@@ -146,7 +145,10 @@ This code implements the XDM API for use within item preview app.
         Blackbox.showButton('btnMask', showMask, true);
         Blackbox.showButton('btnCalculator', calculatorBtn, true);
         Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
-        Blackbox.showButton('btnDictionary', dictionaryBtn, true);
+        if (TDS.getAccommodationProperties().getDictionary()) {
+            Blackbox.showButton('btnDictionary', dictionaryBtn, true);
+        }
+
         return deferred.promise();
     }
 
