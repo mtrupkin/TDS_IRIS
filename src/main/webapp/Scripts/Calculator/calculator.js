@@ -7,7 +7,7 @@
 // http://www.smarterapp.org/documents/American_Institutes_for_Research_Open_Source_Software_License.pdf
 //*******************************************************************************
 /*
-Code used for showing calculator popup.
+Code used for showing calculator popup in Iris.
 */
 
 function Calculator() {}
