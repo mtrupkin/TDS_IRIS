@@ -274,7 +274,7 @@ This code implements the XDM API for use within item preview app.
         var url = location.href + '/Pages/API/content/load?id=' + vendorId;
         setAccommodations(token);
         return $.post(url, token, null, 'text').then(function (data) {
-            response = loadContent(data);
+            var response = loadContent(data);
             return response;
         });
     }
