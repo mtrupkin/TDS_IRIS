@@ -6,6 +6,7 @@ This code implements the XDM API for use within item preview app.
 
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
+    var irisUrl = location.href;
 
     // Functions that are used by toolbar buttons
 
@@ -271,7 +272,7 @@ This code implements the XDM API for use within item preview app.
 
     function loadToken(vendorId, token) {
         TDS.Dialog.showProgress();
-        var url = location.href + '/Pages/API/content/load?id=' + vendorId;
+        var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
         setAccommodations(token);
         return $.post(url, token, null, 'text').then(function (data) {
             var response = loadContent(data);
