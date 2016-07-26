@@ -8,7 +8,7 @@ This code implements the XDM API for use within item preview app.
     Blackbox.getConfig().preventShowOnLoad = true;
     //Adding this onto TDS for now so it is available in the dictionary handler.
     var irisUrl = location.href;
-
+    var buttonsLoaded = false;
     // Functions that are used by toolbar buttons
 
     //Calculator
@@ -45,6 +45,8 @@ This code implements the XDM API for use within item preview app.
 
     // setup cross domain api 
     XDM.init(window);
+
+
 
     function getItemId(item) {
         return "I-" + item.bankKey + "-" + item.itemKey;
@@ -144,9 +146,12 @@ This code implements the XDM API for use within item preview app.
             deferred.resolve();
         });
 
-        Blackbox.showButton('btnMask', showMask, true);
-        Blackbox.showButton('btnCalculator', calculatorBtn, true);
-        Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
+        if(!buttonsLoaded) {
+            Blackbox.showButton('btnMask', showMask, true);
+            Blackbox.showButton('btnCalculator', calculatorBtn, true);
+            Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
+            buttonsLoaded = true;
+        }
         if (TDS.getAccommodationProperties().getDictionary()) {
             Blackbox.showButton('btnDictionary', dictionaryBtn, true);
         }
