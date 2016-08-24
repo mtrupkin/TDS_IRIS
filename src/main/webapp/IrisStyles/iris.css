@@ -11,3 +11,7 @@ div#contents,
 div#contents .layout_wai {
     top: 70px;
 }
+
+.yui-resize .yui-resize-handle-br {
+    position: absolute;
+}

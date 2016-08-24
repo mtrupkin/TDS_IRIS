@@ -142,7 +142,9 @@ This code implements the XDM API for use within item preview app.
         page.render();
         page.once('loaded', function () {
             TDS.Dialog.hideProgress();
+            CM.accessibilityEnabled = true;
             page.show();
+            CM.accessibilityEnabled = false;
             deferred.resolve();
         });
 
@@ -154,6 +156,18 @@ This code implements the XDM API for use within item preview app.
         }
         if (TDS.getAccommodationProperties().getDictionary()) {
             Blackbox.showButton('btnDictionary', dictionaryBtn, true);
+        }
+
+        /*
+         If the print size is specified we need to set it because the previous
+         If not set it to zero because this may not be the first item we are loading and the zoom level
+         may have been set when we loaded an item earlier.
+         */
+        var printSize = CM.getAccProps().getPrintSize();
+        if(printSize) {
+            CM.getZoom().setLevel(printSize, true);
+        } else {
+            CM.getZoom().setLevel(0, true);
         }
 
         return deferred.promise();
@@ -277,6 +291,7 @@ This code implements the XDM API for use within item preview app.
     }
 
     function loadToken(vendorId, token) {
+        Messages.set('TDS.WordList.illustration', 'Illustration Glossary', 'ENU');
         TDS.Dialog.showProgress();
         var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
         setAccommodations(token);
