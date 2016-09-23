@@ -291,7 +291,7 @@ This code implements the XDM API for use within item preview app.
     }
 
     function loadToken(vendorId, token) {
-        Messages.set('TDS.WordList.illustration', 'Illustration Glossary', 'ENU');
+        Messages.set('TDS.WordList.illustration', 'Illustration', 'ENU');
         TDS.Dialog.showProgress();
         var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
         setAccommodations(token);
