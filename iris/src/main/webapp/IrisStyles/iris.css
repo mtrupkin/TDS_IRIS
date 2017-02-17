@@ -1,0 +1,18 @@
+/*div#topBar {
+	display: none;
+}*/
+ul#studentControls{
+    visibility: hidden;
+}
+div#infoBar{
+	display: none;
+}
+div#contents, 
+div#contents .layout_wai {
+    top: 70px;
+}
+
+.yui-resize .yui-resize-handle-br {
+    position: absolute;
+    margin-top: -23px;
+}
