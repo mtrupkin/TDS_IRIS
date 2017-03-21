@@ -4,11 +4,11 @@ This code implements the XDM API for use within item preview app.
 
 (function (XDM, CM) {
 
+
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
     //Adding this onto TDS for now so it is available in the dictionary handler.
     var irisUrl = location.href;
-    var buttonsLoaded = false;
     // Functions that are used by toolbar buttons
 
     //Calculator
@@ -18,6 +18,15 @@ This code implements the XDM API for use within item preview app.
             Calculator.toggle();
         }
     };
+    var comments = function(ev){
+        var currentPage = ContentManager.getCurrentPage();
+        var currentItem = ContentManager.getCurrentEntity();
+
+        if (currentPage && TDS.Notes && currentItem) {
+            var itemId = getItemId(currentItem);
+            TDS.Notes.open({"id": itemId, "type": TDS.Notes.Types.TextArea});
+        }
+    }
 
     //Global Notes
     var globalNotesBtn = function(ev) {
@@ -113,6 +122,11 @@ This code implements the XDM API for use within item preview app.
         };
     }
 
+    function isGlobalNotesEnabled(){
+        return TDS.getAccommodationProperties().existsAndNotEquals('Global Notes', 'TDS_GN0');
+
+    }
+
     function loadContent(xmlDoc) {
         if (typeof xmlDoc == 'string') {
             xmlDoc = Util.Xml.parseFromString(xmlDoc);
@@ -148,15 +162,26 @@ This code implements the XDM API for use within item preview app.
             deferred.resolve();
         });
 
-        if(!buttonsLoaded) {
+        ContentManager.onItemEvent("comment", function(ev) {
+            comments(ev);
+        });
+
+
+        if (TDS.getAccommodationProperties().hasMaskingEnabled()) {
             Blackbox.showButton('btnMask', showMask, true);
-            Blackbox.showButton('btnCalculator', calculatorBtn, true);
-            Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
-            buttonsLoaded = true;
         }
-        if (TDS.getAccommodationProperties().getDictionary()) {
+
+        if(isGlobalNotesEnabled()){
+            Blackbox.showButton('btnGlobalNotes', globalNotesBtn, true);
+        }
+        if (TDS.getAccommodationProperties().hasCalculator()) {
+            Blackbox.showButton('btnCalculator', calculatorBtn, true);
+        }
+
+        if (TDS.getAccommodationProperties().isDictionaryEnabled()) {
             Blackbox.showButton('btnDictionary', dictionaryBtn, true);
         }
+
 
         /*
          If the print size is specified we need to set it because the previous
@@ -169,6 +194,7 @@ This code implements the XDM API for use within item preview app.
         } else {
             CM.getZoom().setLevel(0, true);
         }
+        Blackbox.bindUIEvents();
 
         return deferred.promise();
     }
