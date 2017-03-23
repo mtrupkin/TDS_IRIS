@@ -315,7 +315,7 @@ li.key-delete {
 	/*border-left-width: 2px;
 	border-left-style: solid;
 	border-left-color: #999999;*/
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 /* this fixes extra scroll bar issue with Mozilla 1.3 and reading */
 .browserVer_1_3 .layout17 .theQuestions .padding {
@@ -328,7 +328,7 @@ li.key-delete {
 }
 /*.layout17  .activeItem {
 	border: 1px dashed #99CCFF !important;
-	background-image: url(../Images/gradientActive.gif);
+	background-image: url(../../Shared/Images/gradientActive.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 }*/
@@ -392,7 +392,7 @@ li.key-delete {
 	/*border-left-width: 2px;
 	border-left-style: solid;
 	border-left-color: #999999;*/
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 .layout21 .padding {
 	padding-right: 10px;
@@ -427,7 +427,7 @@ li.key-delete {
 }
 /*.layout21  .activeItem {
 	border: 1px dashed #99CCFF !important;
-	background-image: url(../Images/gradientActive.gif);
+	background-image: url(../../Shared/Images/gradientActive.gif);
 	background-repeat: repeat-y;
 	background-position: right top;
 }*/
@@ -540,7 +540,7 @@ li.key-delete {
 	left:0;
 	height: 40%;
 	width: 100%;
-	/*background: url(../Images/controls/passageborder.gif) repeat-x left bottom;*/
+	/*background: url(../../Shared/Images/controls/passageborder.gif) repeat-x left bottom;*/
 }
 .layout23 .theQuestions {
 	position:absolute;
@@ -641,7 +641,7 @@ li.key-delete {
 	overflow:auto;
 	left:38%;
 	width: 62%;
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 .layout24 .padding {
 	padding-right: 10px;
@@ -733,7 +733,7 @@ li.key-delete {
 	overflow:auto;
 	left:30%;
 	width: 70%;
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 .layout25 .padding {
 	padding-right: 10px;
@@ -827,7 +827,7 @@ li.key-delete {
 	overflow:auto;
 	left:50%;
 	width: 50%;
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 .layout26 .padding {
 	padding-right: 10px;
@@ -923,7 +923,7 @@ li.key-delete {
 	overflow:auto;
 	left:70%;
 	width: 30%;
-	background: url(../Images/controls/passageborder.gif) repeat-y left top;
+	background: url(../../Shared/Images/controls/passageborder.gif) repeat-y left top;
 }
 .layout27 .padding {
 	padding-right: 10px;
@@ -1151,7 +1151,7 @@ li.key-delete {
 .sound_repeat {
 	display: -moz-inline-stack;
 	display: inline-block;
-	background: url(../images/controls/avcontrols.gif) no-repeat -71px -56px;
+	background: url(../../Shared/Images/controls/avcontrols.gif) no-repeat -71px -56px;
 	color: #fff;
 	text-decoration: none;
 	vertical-align: middle;
@@ -1179,7 +1179,7 @@ li.key-delete {
 .sound_repeat.load_start, .sound_repeat.load_complete, .sound_repeat.decode_start,
 .sound_repeat.load_start:hover, .sound_repeat.load_complete:hover, .sound_repeat.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader24.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader24.gif) no-repeat center center;
 }
 
 .TDS_PS_L1 .sound_repeat {
@@ -1208,7 +1208,7 @@ li.key-delete {
 .TDS_PS_L1 .sound_repeat.load_start, .TDS_PS_L1 .sound_repeat.load_complete, .TDS_PS_L1 .sound_repeat.decode_start,
 .TDS_PS_L1 .sound_repeat.load_start:hover, .TDS_PS_L1 .sound_repeat.load_complete:hover, .TDS_PS_L1 .sound_repeat.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader29.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader29.gif) no-repeat center center;
 }
 .TDS_PS_L2 .sound_repeat, .TDS_PS_L3 .sound_repeat, .TDS_PS_L4 .sound_repeat {
 	height: 36px;
@@ -1240,7 +1240,7 @@ li.key-delete {
 .TDS_PS_L3 .sound_repeat.load_start:hover, .TDS_PS_L3 .sound_repeat.load_complete:hover, .TDS_PS_L3 .sound_repeat.decode_start:hover, .TDS_PS_L4 .sound_repeat.load_start, .TDS_PS_L4 .sound_repeat.load_complete, .TDS_PS_L4 .sound_repeat.decode_start,
 .TDS_PS_L4 .sound_repeat.load_start:hover, .TDS_PS_L4 .sound_repeat.load_complete:hover, .TDS_PS_L4 .sound_repeat.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader32.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader32.gif) no-repeat center center;
 }
 /* @end */
 
@@ -1266,7 +1266,7 @@ li.key-delete {
 }
 .optionSound a {
 	display:block;
-	background: url(../images/controls/avcontrols.gif) no-repeat -75px -86px;
+	background: url(../../Shared/Images/controls/avcontrols.gif) no-repeat -75px -86px;
 	height: 13px;
 	width: 17px;
 	text-decoration: none;
@@ -1293,7 +1293,7 @@ li.key-delete {
 .optionSound a.load_start, .optionSound a.load_complete, .optionSound a.decode_start,
 .optionSound a.load_start:hover, .optionSound a.load_complete:hover, .optionSound a.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader13.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader13.gif) no-repeat center center;
 }
 .TDS_PS_L1 .optionSound {
 	height: 15px;
@@ -1327,7 +1327,7 @@ li.key-delete {
 .TDS_PS_L1 .optionSound a.load_start, .TDS_PS_L1 .optionSound a.load_complete, .TDS_PS_L1 .optionSound a.decode_start,
 .TDS_PS_L1 .optionSound a.load_start:hover, .TDS_PS_L1 .optionSound a.load_complete:hover, .TDS_PS_L1 .optionSound a.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader15.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader15.gif) no-repeat center center;
 }
 .TDS_PS_L2 .optionSound, .TDS_PS_L3 .optionSound, .TDS_PS_L4 .optionSound {
 	height: 19px;
@@ -1372,7 +1372,7 @@ li.key-delete {
 .TDS_PS_L3 .optionSound a.load_start:hover, .TDS_PS_L3 .optionSound a.load_complete:hover, .TDS_PS_L3 .optionSound a.decode_start:hover, .TDS_PS_L4 .optionSound a.load_start, .TDS_PS_L4 .optionSound a.load_complete, .TDS_PS_L4 .optionSound a.decode_start,
 .TDS_PS_L4 .optionSound a.load_start:hover, .TDS_PS_L4 .optionSound a.load_complete:hover, .TDS_PS_L4 .optionSound a.decode_start:hover {
 	cursor: default;
-	background: url(../images/controls/loader19.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader19.gif) no-repeat center center;
 }
 
 
@@ -1549,44 +1549,44 @@ li.key-delete {
 /* @group special charactars */
 /* for toolbar icon */
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-specialchar span.yui-toolbar-icon {
-	background-image: url(../Images/controls/specialChar.gif);
+	background-image: url(../../Shared/Images/controls/specialChar.gif);
 	background-position: center center;
 	left:6px;
 	top:1px;
 }
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-spellcheck span.yui-toolbar-icon {
-	background-image: url(../Images/controls/spellcheck.gif);
+	background-image: url(../../Shared/Images/controls/spellcheck.gif);
 	background-position: center center;
 	left:5px;
 	top:3px;
 }
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-reset span.yui-toolbar-icon {
-	background-image: url(../Images/controls/reset.png);
+	background-image: url(../../Shared/Images/controls/reset.png);
 	background-position: center center;
 	left:5px;
 	top:2px;
 }
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-cut span.yui-toolbar-icon {
-	background-image: url(../Images/controls/tool_cut.png);
+	background-image: url(../../Shared/Images/controls/tool_cut.png);
 	background-position: center center;
 	left:6px;
 	top:2px;
 }
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-copy span.yui-toolbar-icon {
-	background-image: url(../Images/controls/tool_copy.png);
+	background-image: url(../../Shared/Images/controls/tool_copy.png);
 	background-position: center center;
 	left:6px;
 	top:2px;
 }
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-paste span.yui-toolbar-icon {
-	background-image: url(../Images/controls/tool_paste.png);
+	background-image: url(../../Shared/Images/controls/tool_paste.png);
 	background-position: center center;
 	left:7px;
 	top:2px;
 }
 /*.yui-skin-sam .yui-toolbar-container .yui-toolbar-langselect span.yui-toolbar-icon*/
 .yui-skin-sam .yui-toolbar-container .yui-toolbar-select span.yui-toolbar-icon{
-	background-image: url(../Images/controls/language.gif);
+	background-image: url(../../Shared/Images/controls/language.gif);
 	background-position: center center;
 	left: 5px;
 	top: 3px;
@@ -1638,7 +1638,7 @@ li.key-delete {
 }
 /* WARNING: Leaving this up causes Mac FF 2.0 to not show Flash */
 /*.tutorial .stimulusCell {
-	background: url(../images/controls/loader32.gif) no-repeat center center;
+	background: url(../../Shared/Images/controls/loader32.gif) no-repeat center center;
 }*/
 
 .tutorial .stimulusCell p,
@@ -1659,7 +1659,7 @@ li.key-delete {
 	position: absolute;
 	top: 0px;
 	left: 0px;
-	background: url(../Images/clear.gif) repeat;
+	background: url(../../Shared/Images/clear.gif) repeat;
 	z-index:999;
 }
 .noLinux iframe {
@@ -1716,13 +1716,13 @@ li.key-delete {
 	margin: 0px;
 }
 .thePassage.contextAreaFocus .padding {
-	background: url(../Images/active_passage.png) repeat-y left top;
+	background: url(../../Shared/Images/active_passage.png) repeat-y left top;
 }
 .layout11 .itemContainer, .layout17 .itemContainer, .layout21 .itemContainer, .layout23 .itemContainer {
 	border:1px solid transparent;
 }
 .layout11 .activeItem, .layout17 .activeItem, .layout21 .activeItem, .layout23 .activeItem  {
-	background-image: url(../images/active.png);
+	background-image: url(../../Shared/Images/active.png);
 	background-position: 0 0;
 	background-repeat: no-repeat;
 	border-top:1px solid #e2efff !important;
@@ -1769,23 +1769,23 @@ li.key-delete {
 	display: block;
 	color: #000;
 	text-decoration: none;
-	background: url(../Images/writing/chooseMark1.png) no-repeat left top;
+	background: url(../../Shared/Images/writing/chooseMark1.png) no-repeat left top;
 	padding-left: 40px;
 	padding-top: 10px;
 	padding-bottom: 10px;
 	cursor: pointer;
 }
 .guide_revision li:hover {
-	background-image: url(../Images/writing/chooseMark4.png);
+	background-image: url(../../Shared/Images/writing/chooseMark4.png);
 }
 .guide_revision li:focus, .guide_revision li:active {
-	background-image: url(../Images/writing/chooseMark2.png) !important;
+	background-image: url(../../Shared/Images/writing/chooseMark2.png) !important;
 }
 .guide_revision .checked {
-	background-image: url(../Images/writing/chooseMark3.png);
+	background-image: url(../../Shared/Images/writing/chooseMark3.png);
 }
 .guide_revision li.checked:hover {
-	background-image: url(../Images/writing/chooseMark2.png) !important;
+	background-image: url(../../Shared/Images/writing/chooseMark2.png) !important;
 }
 .guide_revision h3 {
 	border-bottom: solid 1px #ccc;
@@ -1876,7 +1876,7 @@ li.key-delete {
 	border-radius: 10px;
 }
 .SimContainer.loading {
-    background-image: url(../images/controls/loader32.gif);
+    background-image: url(../../Shared/Images/controls/loader32.gif);
 }
 .SimContainer.failed {
     background-image: url(../../Images/alerts/stopWhite.gif);
@@ -2051,15 +2051,15 @@ li.key-delete {
     text-indent: -9999px;
     overflow: hidden;
 	margin: 0 0 .3em;
-	background: transparent url(../Images/controls/geometry_sprites.png) no-repeat center 0;
+	background: transparent url(../../Shared/Images/controls/geometry_sprites.png) no-repeat center 0;
 }
 .TDS_CCInvert .measuring .tools_measure button,
 .TDS_CCWhiteN .measuring .tools_measure button {
-	background-image: url(../Images/controls/geometry_sprites_white.png);
+	background-image: url(../../Shared/Images/controls/geometry_sprites_white.png);
 	border-color: #FFF;
 }
 .TDS_CCYellowB .measuring .tools_measure button {
-	background-image: url(../Images/controls/geometry_sprites_yellow.png);
+	background-image: url(../../Shared/Images/controls/geometry_sprites_yellow.png);
 	border-color: #FFCC00;
 }
 .TDS_CCInvert .measuring .tools_measure button:hover,

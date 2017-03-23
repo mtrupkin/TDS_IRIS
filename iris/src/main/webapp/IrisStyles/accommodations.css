@@ -775,7 +775,7 @@ body.TDS_CCGray2 .mc_stacked tr, body.TDS_CCMedGrayLtGray .mc_stacked tr {
 .TDS_CCMedGrayLtGray.TDS_PS_L2 .itemTools a,
 .TDS_CCMedGrayLtGray.TDS_PS_L3 .itemTools a,
 .TDS_CCMedGrayLtGray.TDS_PS_L4 .itemTools a {
-	background-image: url(../Images/universal/universal_itemsprites_grey.png) !important;
+	background-image: url(../../Shared/Images//universal/universal_itemsprites_grey.png) !important;
 }
 .TDS_CCGray .itemTools a.itemMenu,
 .TDS_CCGray.TDS_PS_L1 .itemTools a.itemMenu,
@@ -792,7 +792,7 @@ body.TDS_CCGray2 .mc_stacked tr, body.TDS_CCMedGrayLtGray .mc_stacked tr {
 .TDS_CCMedGrayLtGray.TDS_PS_L2 .itemTools a.itemMenu,
 .TDS_CCMedGrayLtGray.TDS_PS_L3 .itemTools a.itemMenu,
 .TDS_CCMedGrayLtGray.TDS_PS_L4 .itemTools a.itemMenu {
-	background-image: url(../Images/universal/universal_content.png) !important;
+	background-image: url(../../Shared/Images//universal/universal_content.png) !important;
 }*/
 
 
@@ -1223,7 +1223,7 @@ body.TDS_CCGray .TDS_WORD_LIST {
 .TDS_PS_L1.TDS_CCWhiteN a.markReviewMarked:active, .TDS_PS_L1.TDS_CCYellowB a.markReviewMarked:active, .TDS_PS_L1.TDS_CCInvert a.markReviewMarked:active, .TDS_PS_L2.TDS_CCWhiteN a.markReviewMarked:active, .TDS_PS_L2.TDS_CCYellowB a.markReviewMarked:active, .TDS_PS_L2.TDS_CCInvert a.markReviewMarked:active, .TDS_PS_L3.TDS_CCWhiteN a.markReviewMarked:active, .TDS_PS_L3.TDS_CCYellowB a.markReviewMarked:active, .TDS_PS_L3.TDS_CCInvert a.markReviewMarked:active, .TDS_PS_L4.TDS_CCWhiteN a.markReviewMarked:active, .TDS_PS_L4.TDS_CCYellowB a.markReviewMarked:active, .TDS_PS_L4.TDS_CCInvert a.markReviewMarked:active,
 .TDS_CCWhiteN a.markReviewMarked:hover, .TDS_CCYellowB a.markReviewMarked:hover, .TDS_CCInvert a.markReviewMarked:hover,
 .TDS_PS_L1.TDS_CCWhiteN a.markReviewMarked:hover, .TDS_PS_L1.TDS_CCYellowB a.markReviewMarked:hover, .TDS_PS_L1.TDS_CCInvert a.markReviewMarked:hover, .TDS_PS_L2.TDS_CCWhiteN a.markReviewMarked:hover, .TDS_PS_L2.TDS_CCYellowB a.markReviewMarked:hover, .TDS_PS_L2.TDS_CCInvert a.markReviewMarked:hover, .TDS_PS_L3.TDS_CCWhiteN a.markReviewMarked:hover, .TDS_PS_L3.TDS_CCYellowB a.markReviewMarked:hover, .TDS_PS_L3.TDS_CCInvert a.markReviewMarked:hover, .TDS_PS_L4.TDS_CCWhiteN a.markReviewMarked:hover, .TDS_PS_L4.TDS_CCYellowB a.markReviewMarked:hover, .TDS_PS_L4.TDS_CCInvert a.markReviewMarked:hover {
-	background-image: url(../Images/controls/item_sprites_colorChoice.png) !important;
+	background-image: url(../../Shared/Images//controls/item_sprites_colorChoice.png) !important;
 }
 
 /*temporarily disable color choices in formula pages*/
@@ -1255,7 +1255,7 @@ body.TDS_CCGray .TDS_WORD_LIST {
 .practiceTest.TDS_CCYellow .checkHolder, .practiceTest.TDS_CCYellow2 .checkHolder, .practiceTest.TDS_CCCream .checkHolder, .practiceTest.TDS_CCBlue .checkHolder, .practiceTest.TDS_CCBlue2 .checkHolder, .practiceTest.TDS_CCMagenta .checkHolder, .practiceTest.TDS_CCMagenta2 .checkHolder, .practiceTest.TDS_CCGray .checkHolder, .practiceTest.TDS_CCGray2 .checkHolder, .practiceTest.TDS_CCGreen .checkHolder, .practiceTest.TDS_CCGreen2 .checkHolder, .practiceTest.TDS_CCYellowB .checkHolder, .practiceTest.TDS_CCInvert .checkHolder, .practiceTest.TDS_CCWhiteN .checkHolder,
 .TDS_CCYellow .linkbox, .TDS_CCYellow2 .linkbox, .TDS_CCCream .linkbox, .TDS_CCBlue .linkbox, .TDS_CCBlue2 .linkbox, .TDS_CCMagenta .linkbox, .TDS_CCMagenta2 .linkbox, .TDS_CCGray .linkbox, .TDS_CCGray2 .linkbox, .TDS_CCGreen .linkbox, .TDS_CCGreen2 .linkbox, .TDS_CCYellowB .linkbox, .TDS_CCInvert .linkbox, .TDS_CCWhiteN .linkbox {
 	background-color: inherit;
-	background-image: url(../Images/mediumGrey.png);
+	background-image: url(../../Shared/Images//mediumGrey.png);
 	color: #000;
 }
 .practiceTest.TDS_CCYellowB .checkHolder,
@@ -1296,12 +1296,12 @@ body.TDS_CCGray .TDS_WORD_LIST {
 
  {
 	background-color: inherit;
-	background-image: url(../Images/mediumGrey.png);
+	background-image: url(../../Shared/Images//mediumGrey.png);
 }
 
 .TDS_CCYellow .actions span, .TDS_CCYellow2 .actions span, .TDS_CCCream .actions span, .TDS_CCBlue .actions span, .TDS_CCBlue2 .actions span, .TDS_CCMagenta .actions span, .TDS_CCMagenta2 .actions span, .TDS_CCGray .actions span, .TDS_CCGray2 .actions span, .TDS_CCGreen .actions span, .TDS_CCGreen2 .actions span, .TDS_CCYellowB .actions span, .TDS_CCInvert .actions span, .TDS_CCWhiteN .actions span {
 	background-color: transparent !important;
-	background-image: url(../Images/lightGrey.png) !important;
+	background-image: url(../../Shared/Images//lightGrey.png) !important;
 }
 
 .TDS_CCYellow .resumeTest, .TDS_CCYellow2 .resumeTest, .TDS_CCCream .resumeTest, .TDS_CCBlue .resumeTest, .TDS_CCBlue2 .resumeTest, .TDS_CCMagenta .resumeTest, .TDS_CCMagenta2 .resumeTest, .TDS_CCGray .resumeTest, .TDS_CCGray2 .resumeTest, .TDS_CCGreen .resumeTest, .TDS_CCGreen2 .resumeTest, .TDS_CCYellowB .resumeTest, .TDS_CCInvert .resumeTest, .TDS_CCWhiteN .resumeTest,

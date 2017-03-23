@@ -57,10 +57,8 @@ div.toolsContainer a.itemMenu {
 .layout27 .theQuestions,
 .layout28 .theQuestions,
 .layout29 .theQuestions {
-    background: url(../../Images/universal/universal_passage_devider.png) repeat-y scroll left top;
+    background: url(../../../Shared/Images/universal/universal_passage_devider.png) repeat-y scroll left top;
 }
-
-
 
 .questionAnswerGroup {
 	margin-top: 2em;
@@ -128,7 +126,7 @@ div.toolsContainer a.itemMenu {
 .itemMarked .bigTable .questionContainer h2,
 .itemMarked .questionCell h2,
 .itemMarked .questionContainer h2 {
-	background: transparent url(../../Images/universal/universal_content.png) no-repeat right -250px;
+	background: transparent url(../../../Shared/Images/universal/universal_content.png) no-repeat right -250px;
 	border-left: solid 1px #666;
 }
 .bigTable .itemMarked.activeItem .questionCell h2,
@@ -662,7 +660,7 @@ div.toolsContainer a.itemMenu {
 	border: solid 1px #000;
 	border-bottom-color: #0785AB;
 	margin-right: 5px;
-	background: url(../../Images/lightGrey.png) repeat;
+	background: url(../../../Shared/Images/lightGrey.png) repeat;
 	padding-left: .7em;
 	padding-right: .7em;
 }
@@ -714,7 +712,7 @@ div.toolsContainer a.itemMenu {
 
 
 .layout11 .activeItem, .layout17 .activeItem, .layout21 .activeItem, .layout23 .activeItem {
-    background-image: url("../../Images/active.png");
+    background-image: url("../../../Shared/Images/active.png");
     background-position: 0 0;
     background-repeat: no-repeat;
     border-left: 1px solid #E2EFFF !important;
@@ -1149,7 +1147,7 @@ div.toolsContainer a.itemMenu {
 /* @group ASL */
 
 a.ASL {
-	background: transparent url(../../Images/ASL.png) no-repeat scroll center -70px;
+	background: transparent url(../../../Shared/Images/ASL.png) no-repeat scroll center -70px;
     display: block;
     height: 16px;
     margin-top: 1px;
@@ -1572,7 +1570,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 /* @group Larger ELPA buttons */
 /*Level 0 - sound icon*/
 .sound_repeat {
-    background: transparent url(../../Images/modern/newSound.png) no-repeat scroll center -925px;
+    background: transparent url(../../../Shared/Images/modern/newSound.png) no-repeat scroll center -925px;
     height: 40px;
     width: 40px;
     margin-top: 5px;
@@ -1790,7 +1788,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 }
 .audioControls .playPause,
 .audioControls.playing_pause .playPause {
-	background: url(../../Images/modern/newSound-2014.png) no-repeat center -925px  rgba(0, 0, 0, 0);
+	background: url(../../../Shared/Images/modern/newSound-2014.png) no-repeat center -925px  rgba(0, 0, 0, 0);
     height: 0px;
 	width: 0px;
 	display: inline-block;
@@ -1799,7 +1797,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
     margin-top: 5px;
 }
 .audioControls .rewind {
-	background: url(../../Images/modern/newSound-2014.png) no-repeat center -2557px rgba(0, 0, 0, 0);
+	background: url(../../../Shared/Images/modern/newSound-2014.png) no-repeat center -2557px rgba(0, 0, 0, 0);
     height: 0px;
 	width: 0px;
 	display: inline-block;
@@ -1873,7 +1871,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 .audioControls.load_start,
 .audioControls.load_complete,
 .audioControls.decode_start {
-	background: #fff url(../../Images/controls/loader29.gif) no-repeat center center;
+	background: #fff url(../../../Shared/Images/controls/loader29.gif) no-repeat center center;
 }
 .audioControls.load_start a,
 .audioControls.load_complete a,
@@ -2146,7 +2144,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 
 /*Level 0 - sound icon for option*/
 .optionsContainer .optionSound .audioControls a {
-	background: url(../../Images/modern/newSound.png) no-repeat center -1814px;
+	background: url(../../../Shared/Images/modern/newSound.png) no-repeat center -1814px;
 	height: 19px;
 	width: 18px;
 	margin-top: 1px;
@@ -2544,7 +2542,7 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
     color: #fff;
 }
 .layout_wai .itemContainer.itemMarked h3 {
-	background: url(../../Images/universal/universal_content.png) no-repeat right -250px;
+	background: url(../../../Shared/Images/universal/universal_content.png) no-repeat right -250px;
 	border-left: solid 1px #666;
 }
 .layout_wai .itemMarked.activeItem.itemContainer h3 {
@@ -2638,26 +2636,26 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 math .symbol_9633 {
 	font-size: 14px;
 	letter-spacing: 18px;
-	background: url(../../Images/mathSymbols/box_00a.png) no-repeat center top;
+	background: url(../../../Shared/Images/mathSymbols/box_00a.png) no-repeat center top;
 	color: transparent;
 }
 .TDS_PS_L1 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_01.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_01.png);
 	font-size: 19px;
 	letter-spacing: 20px;
 }
 .TDS_PS_L2 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_02.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_02.png);
 	font-size: 24px;
 	letter-spacing: 22px;
 }
 .TDS_PS_L3 math .symbol_9633 {
-	background-image:  url(../../Images/mathSymbols/box_03.png);
+	background-image:  url(../../../Shared/Images/mathSymbols/box_03.png);
 	font-size: 33px;
 	letter-spacing: 22px;
 }
 .TDS_PS_L4 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_04.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_04.png);
 	font-size: 41px;
 	letter-spacing: 32px;
 }
@@ -2666,7 +2664,7 @@ math .symbol_9633 {
 .TDS_PS_L6 math .symbol_9633,
 .TDS_PS_L7 math .symbol_9633, 
 .TDS_PS_L8 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_04.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_04.png);
 	font-size: 1em;
 	letter-spacing: 32px;
 	background-size: 100% 100%;
@@ -2685,40 +2683,40 @@ math .symbol_9633 {
 }
 /* */
 .TDS_CCYellowB math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_00_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_00_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L1 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_01_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_01_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L2 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_02_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_02_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L3 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_03_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_03_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L4 math .symbol_9633
 .TDS_CCYellowB.TDS_PS_L5 math .symbol_9633,
 .TDS_CCYellowB.TDS_PS_L6 math .symbol_9633,
 .TDS_CCYellowB.TDS_PS_L7 math .symbol_9633,
 .TDS_CCYellowB.TDS_PS_L8 math .symbol_9633{
-	background-image: url(../../Images/mathSymbols/box_04_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_04_yellow.png);
 }
 /* */
 .TDS_CCInvert math .symbol_9633,
 .TDS_CCWhiteN math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_00_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_00_white.png);
 }
 .TDS_CCInvert.TDS_PS_L1 math .symbol_9633,
 .TDS_CCWhiteN.TDS_PS_L1 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_01_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_01_white.png);
 }
 .TDS_CCInvert.TDS_PS_L2 math .symbol_9633,
 .TDS_CCWhiteN.TDS_PS_L2 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_02_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_02_white.png);
 }
 .TDS_CCInvert.TDS_PS_L3 math .symbol_9633,
 .TDS_CCWhiteN.TDS_PS_L3 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_03_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_03_white.png);
 }
 .TDS_CCInvert.TDS_PS_L4 math .symbol_9633,
 .TDS_CCWhiteN.TDS_PS_L4 math .symbol_9633,
@@ -2730,7 +2728,7 @@ math .symbol_9633 {
 .TDS_CCWhiteN.TDS_PS_L7 math .symbol_9633,
 .TDS_CCInvert.TDS_PS_L8 math .symbol_9633,
 .TDS_CCWhiteN.TDS_PS_L8 math .symbol_9633 {
-	background-image: url(../../Images/mathSymbols/box_04_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/box_04_white.png);
 }
 
 /*box for safari 7 - will need to add for secure browser in iOS, iOS 6 does not need these styles*/
@@ -2763,27 +2761,27 @@ math .symbol_9633 {
 
 /*angle*/
 math .symbol_8736 {
-	background: url(../../Images/mathSymbols/angle_00.png) no-repeat center 1px;
+	background: url(../../../Shared/Images/mathSymbols/angle_00.png) no-repeat center 1px;
 	color: transparent;
 	letter-spacing: 8px;
 	font-size: 15px;
 }
 .TDS_PS_L1 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_01.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_01.png);
 	font-size: 17px;
 }
 .TDS_PS_L2 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_02.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_02.png);
 	font-size: 20px;
 	letter-spacing: 10px;
 }
 .TDS_PS_L3 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_03.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_03.png);
 	font-size: 26px;
 	letter-spacing: 12px;
 }
 .TDS_PS_L4 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_04.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_04.png);
 	font-size: 34px;
 	letter-spacing: 14px;
 }
@@ -2796,40 +2794,40 @@ math .symbol_8736 {
 }
 /* */
 .TDS_CCYellowB math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_00_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_00_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L1 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_01_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_01_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L2 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_02_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_02_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L3 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_03_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_03_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L4 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_04_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_04_yellow.png);
 }
 /* */
 .TDS_CCInvert math .symbol_8736,
 .TDS_CCWhiteN math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_00_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_00_white.png);
 }
 .TDS_CCInvert.TDS_PS_L1 math .symbol_8736,
 .TDS_CCWhiteN.TDS_PS_L1 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_01_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_01_white.png);
 }
 .TDS_CCInvert.TDS_PS_L2 math .symbol_8736,
 .TDS_CCWhiteN.TDS_PS_L2 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_02_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_02_white.png);
 }
 .TDS_CCInvert.TDS_PS_L3 math .symbol_8736,
 .TDS_CCWhiteN.TDS_PS_L3 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_03_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_03_white.png);
 }
 .TDS_CCInvert.TDS_PS_L4 math .symbol_8736,
 .TDS_CCWhiteN.TDS_PS_L4 math .symbol_8736 {
-	background-image: url(../../Images/mathSymbols/angle_04_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/angle_04_white.png);
 }
 /*angle for safari*/
 .browser_safari math .symbol_8736,
@@ -2895,81 +2893,81 @@ math .symbol_8736 {
 /*cdot*/
 math .symbol_8226,
 math .symbol_8901 {
-	background: url(../../Images/mathSymbols/cdot_00a.png) no-repeat center 1px;
+	background: url(../../../Shared/Images/mathSymbols/cdot_00a.png) no-repeat center 1px;
 	color: transparent;
 	font-size: 10px;
 	letter-spacing: 8px;
 }
 .TDS_PS_L1 math .symbol_8226,
 .TDS_PS_L1 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_01.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_01.png);
 }
 .TDS_PS_L2 math .symbol_8226,
 .TDS_PS_L2 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_02.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_02.png);
 	font-size: 15px;
 }
 .TDS_PS_L3 math .symbol_8226,
 .TDS_PS_L3 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_03.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_03.png);
 	font-size: 21px;
 }
 .TDS_PS_L4 math .symbol_8226,
 .TDS_PS_L4 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_04.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_04.png);
 	font-size: 27px;
 }
 /* */
 .TDS_CCYellowB math .symbol_8226,
 .TDS_CCYellowB math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_00_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_00_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L1 math .symbol_8226,
 .TDS_CCYellowB.TDS_PS_L1 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_01_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_01_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L2 math .symbol_8226,
 .TDS_CCYellowB.TDS_PS_L2 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_02_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_02_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L3 math .symbol_8226,
 .TDS_CCYellowB.TDS_PS_L3 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_03_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_03_yellow.png);
 }
 .TDS_CCYellowB.TDS_PS_L4 math .symbol_8226,
 .TDS_CCYellowB.TDS_PS_L4 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_04_yellow.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_04_yellow.png);
 }
 /* */
 .TDS_CCInvert math .symbol_8226,
 .TDS_CCInvert math .symbol_8901,
 .TDS_CCWhiteN math .symbol_8226,
 .TDS_CCWhiteN math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_00_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_00_white.png);
 }
 .TDS_CCInvert.TDS_PS_L1 math .symbol_8226,
 .TDS_CCInvert.TDS_PS_L1 math .symbol_8901,
 .TDS_CCWhiteN.TDS_PS_L1 math .symbol_8226,
 .TDS_CCWhiteN.TDS_PS_L1 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_01_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_01_white.png);
 }
 .TDS_CCInvert.TDS_PS_L2 math .symbol_8226,
 .TDS_CCInvert.TDS_PS_L2 math .symbol_8901,
 .TDS_CCWhiteN.TDS_PS_L2 math .symbol_8226,
 .TDS_CCWhiteN.TDS_PS_L2 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_02_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_02_white.png);
 }
 .TDS_CCInvert.TDS_PS_L3 math .symbol_8226,
 .TDS_CCInvert.TDS_PS_L3 math .symbol_8901,
 .TDS_CCWhiteN.TDS_PS_L3 math .symbol_8226,
 .TDS_CCWhiteN.TDS_PS_L3 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_03_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_03_white.png);
 }
 .TDS_CCInvert.TDS_PS_L4 math .symbol_8226,
 .TDS_CCInvert.TDS_PS_L4 math .symbol_8901,
 .TDS_CCWhiteN.TDS_PS_L4 math .symbol_8226,
 .TDS_CCWhiteN.TDS_PS_L4 math .symbol_8901 {
-	background-image: url(../../Images/mathSymbols/cdot_04_white.png);
+	background-image: url(../../../Shared/Images/mathSymbols/cdot_04_white.png);
 }
 
 /*cdot for safari*/
@@ -3285,7 +3283,7 @@ img.math {
 
 /* hide letters for some QTI options
 .hideOptionLabels .format_mc .optionClicker {
-	background-image: url("../../Images/controls/options/optionBlank.png") !important;
+	background-image: url("../../../Shared/Images/controls/options/optionBlank.png") !important;
 }*/
 
 /* @group Icon Fonts for content tools */
