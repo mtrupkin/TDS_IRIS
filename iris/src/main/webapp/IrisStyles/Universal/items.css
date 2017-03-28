@@ -3474,7 +3474,6 @@ a.toolButton.response-recovery-item {
 
 .passageTools.toolsContainer {
 	position: fixed;
-	display: none;
 	top: 90px;
 	right: 60%;
 	margin: 0px;
@@ -3487,9 +3486,7 @@ a.toolButton.response-recovery-item {
 	-o-transition: all .3s linear;
 	transition: all .3s linear;
 }
-.pageWrapper .passageShowing .passageTools.toolsContainer {
-	display: inline-block;
-}
+
 .pageWrapper.hiding .passage-expanded .passageTools.toolsContainer,
 .pageWrapper.hiding .passage-collapsed .passageTools.toolsContainer {
 	-webkit-transition: all .0s linear;
