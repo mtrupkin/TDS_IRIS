@@ -4374,3 +4374,16 @@ p[style*="text-align:center"] .video-js {
 	touch-action: none;
 	-ms-touch-action:none;
 }
+
+
+.TDS_CCInvert p {
+	color: #fff !important;
+}
+
+.TDS_CCMedGrayLtGray p {
+	color: #666 !important;
+}
+
+.TDS_CCYellowB p {
+	color: #FC0 !important;
+}
