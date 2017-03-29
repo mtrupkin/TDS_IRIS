@@ -118,7 +118,7 @@
 }
 .yui-skin-sam .warning .hd {
 	padding-left: 40px;
-	background: #F5F7F7 url("../../Images/alerts/alert.png") no-repeat left center !important;
+	background: #F5F7F7 url("../Images/alerts/alert.png") no-repeat left center !important;
 }
 .yui-skin-sam .yui-panel .bd {
 	padding: 10px;
@@ -385,7 +385,7 @@ div#tools div.tool iframe {
     line-height: 25px;
     margin-top: -5px;
     text-decoration: none;
-	background: url(../../Shared/Images/modern/sprites_mobile_0.png) center -2730px no-repeat;
+	background: url(../Shared/Images/modern/sprites_mobile_0.png) center -2730px no-repeat;
 }
 .yui-skin-sam .container-close:hover,
 .yui-skin-sam .container-close:active,
@@ -506,7 +506,7 @@ div#tools div.tool iframe {
 	width: 18px;
 	height: 18px;
 	text-indent: -9999px;
-	background: url(../../Shared/Images/controls/audio2010.png) no-repeat -503px -412px;
+	background: url(../Shared/Images/controls/audio2010.png) no-repeat -503px -412px;
 	margin-left: 2px;
 	overflow: hidden;
 }
