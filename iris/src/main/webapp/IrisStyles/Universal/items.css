@@ -2634,9 +2634,9 @@ body.platform_android.touch .passage-expanded .layoutColumnLeft .thePassage {
 
 /*box*/
 math .symbol_9633 {
-	font-size: 16px;
+	font-size: 24px;
 	letter-spacing: 18px;
-	background: url(../../../Shared/Images/mathSymbols/box_00a.png) no-repeat center top;
+	background: url(../../../Shared/Images/mathSymbols/box_00a.png) no-repeat center;
 	color: transparent;
 }
 .TDS_PS_L1 math .symbol_9633 {
