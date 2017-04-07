@@ -182,7 +182,9 @@ This code implements the XDM API for use within item preview app.
             Blackbox.showButton('btnDictionary', dictionaryBtn, true);
         }
 
-
+        if (TDS.getAccommodationProperties().showItemToolsMenu()) {
+            $(".itemTools").addClass("toolsContainer");
+        }
         /*
          If the print size is specified we need to set it because the previous
          If not set it to zero because this may not be the first item we are loading and the zoom level
