@@ -1,24 +1,55 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.opentestsystem.delivery</groupId>
 	<artifactId>iris</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.11</version>
 	<name>iris</name>
+
+	<parent>
+		<groupId>org.opentestsystem.delivery</groupId>
+		<artifactId>student-parent</artifactId>
+		<version>3.0.2-SNAPSHOT</version>
+	</parent>
+
+	<properties>
+		<shared-master.version>3.0.1</shared-master.version>
+		<tds-dll.version>3.0.0</tds-dll.version>
+	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
+			<groupId>org.opentestsystem.delivery</groupId>
+			<artifactId>student-library</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.opentestsystem.delivery</groupId>
+					<artifactId>item-renderer</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+
+		<dependency>
+			<groupId>org.opentestsystem.delivery</groupId>
+			<artifactId>item-renderer-web</artifactId>
+			<version>3.0.10</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.opentestsystem.delivery</groupId>
+			<artifactId>spellcheck</artifactId>
+			<version>3.0.2-SNAPSHOT</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>student</artifactId>
-			<version>2.1.0</version>
+			<version>3.0.2-SNAPSHOT</version>
 			<exclusions>
+				<exclusion>
+					<groupId>org.opentestsystem.delivery</groupId>
+					<artifactId>student-library</artifactId>
+				</exclusion>
 				<exclusion>
 					<groupId>org.opentestsystem.shared</groupId>
 					<artifactId>prog-mgmnt-client</artifactId>
@@ -46,89 +77,61 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-renderer</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.opentestsystem.shared</groupId>
-			<artifactId>shared-tr-api</artifactId>
-			<version>1.0.1</version>
+			<version>3.0.10</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-aironline</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-web</artifactId>
-			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.opentestsystem.shared</groupId>
+			<artifactId>shared-tr-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-logging</artifactId>
-			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-threading</artifactId>
-			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-test</artifactId>
-			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-api</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mssql</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mysql</artifactId>
-			<version>0.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>AIR</groupId>
-			<artifactId>ResourceBundler</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-common</artifactId>
-			<version>0.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-scoring-api</artifactId>
-			<version>1.1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-scoring-engine</artifactId>
-			<version>1.1.0</version>
-			<exclusions>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>testscoring</artifactId>
-			<version>0.0.1</version>
 		</dependency>
-		<dependency>
-			<groupId>AIR.SpellCheck</groupId>
-			<artifactId>spellcheck</artifactId>
-			<version>0.0.1</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpcore</artifactId>
@@ -159,21 +162,35 @@
 			<artifactId>spring-web</artifactId>
 			<version>3.2.1.RELEASE</version>
 		</dependency>
+
 		<dependency>
-			<groupId>org.opentestsystem.delivery</groupId>
-			<artifactId>student.library</artifactId>
-			<version>1.0.2</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-guava -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-guava</artifactId>
+			<version>2.3.0</version>
+		</dependency>
+
+
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>central</id>
-			<name>airdev-releases</name>
-			<url>https://airdev.artifactoryonline.com/airdev/libs-releases-local</url>
-		</repository>
-	</distributionManagement>
-
 	<build>
 		<finalName>iris</finalName>
 		<plugins>
