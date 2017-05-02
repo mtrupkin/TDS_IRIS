@@ -20,6 +20,7 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>student-library</artifactId>
+			<version>3.0.6</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.opentestsystem.delivery</groupId>
