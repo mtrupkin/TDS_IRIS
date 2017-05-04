@@ -48,10 +48,6 @@
 			<version>3.0.2-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
-					<groupId>org.opentestsystem.delivery</groupId>
-					<artifactId>student-library</artifactId>
-				</exclusion>
-				<exclusion>
 					<groupId>org.opentestsystem.shared</groupId>
 					<artifactId>prog-mgmnt-client</artifactId>
 				</exclusion>
