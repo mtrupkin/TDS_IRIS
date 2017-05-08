@@ -1,0 +1,11 @@
+FROM osucass/sbtomcat
+
+WORKDIR /usr/local/tomcat/webapps
+RUN  rm -rf ROOT
+COPY iris.war .
+
+RUN mv iris.war ROOT.war
+
+WORKDIR /usr/local/tomcat/
+
+ENTRYPOINT ["catalina.sh", "run"]
