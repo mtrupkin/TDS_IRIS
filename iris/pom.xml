@@ -29,13 +29,13 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-renderer</artifactId>
-			<version>3.0.10</version>
+			<version>2.3.11</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-renderer-web</artifactId>
-			<version>3.0.10</version>
+			<version>2.3.11</version>
 			<type>war</type>
 		</dependency>
 
