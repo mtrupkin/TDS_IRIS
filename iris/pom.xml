@@ -7,6 +7,15 @@
 	<version>5.0.1</version>
 	<name>iris</name>
 
+	<!-- Artifactory for the Smarter Balanced Iris -->
+	<repositories>
+		<repository>
+			<id>org.opentestsystem</id>
+			<name>airdev-releases</name>
+			<url>https://airdev.artifactoryonline.com/airdev/libs-releases-local</url>
+		</repository>
+	</repositories>
+	
 	<parent>
 		<groupId>org.opentestsystem.shared</groupId>
 		<artifactId>shared-master</artifactId>
