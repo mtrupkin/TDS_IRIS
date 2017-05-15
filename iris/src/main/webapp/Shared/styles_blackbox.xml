@@ -17,7 +17,6 @@
 
         <!-- General -->
         <input>CSS/dialogs.css</input>
-        <input>CSS/accommodations.css</input>
 
     </fileSet>
 
@@ -69,13 +68,27 @@
         <input>CSS/dialogs.css</input>
         <input>CSS/accommodations.css</input>
 
+
+        <!-- SBAC Shell -->
+        <input>../Projects/SBAC/css/modernShell.css</input>
+
         <!-- Content -->
         <input>CSS/items.css</input>
         <input>CSS/elpa.css</input>
         <input>CSS/Universal/items.css</input>
 		<input>CSS/Universal/iat.css</input>
-        <input>../Projects/{0}/css/items.css</input>
-        <input>../Projects/{0}/css/elpa.css</input>
+        <input>../Projects/SBAC/css/items.css</input>
+        <input>../Projects/SBAC/css/elpa.css</input>
+        <input>CSS/items.css</input>
+
+        <input>CSS/modernItems.css</input>
+
+
+        <!-- SBAC Styles -->
+        <input>../Projects/SBAC/css/items.css</input>
+        <input>../Projects/SBAC/css/elpa.css</input>
+        <input>../Projects/SBAC/css/modernitems.css</input>
+
 
         <!-- Widgets -->
         <reference set="widgets" />
@@ -103,7 +116,7 @@
         <input>CSS/Modern/frame.css</input>
         <input>CSS/normalize.css</input>
         <input>CSS/Modern/shell.css</input>
-        <input>../Projects/{0}/css/modernShell.css</input>
+        <input>../Projects/SBAC/css/modernShell.css</input>
         <input>CSS/dialogs.css</input>
         <input>CSS/accommodations.css</input>
 
@@ -111,9 +124,9 @@
         <input>CSS/items.css</input>
         <input>CSS/elpa.css</input>
         <input>CSS/modernItems.css</input>
-        <input>../Projects/{0}/css/items.css</input>
-        <input>../Projects/{0}/css/elpa.css</input>
-        <input>../Projects/{0}/css/modernItems.css</input>
+        <input>../Projects/SBAC/css/items.css</input>
+        <input>../Projects/SBAC/css/elpa.css</input>
+        <input>../Projects/SBAC/css/modernItems.css</input>
 
         <!-- Widgets -->
         <reference set="navigator_widgets" />

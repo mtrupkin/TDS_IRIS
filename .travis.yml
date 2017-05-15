@@ -1,0 +1,50 @@
+language: java
+jdk:
+- oraclejdk7
+sudo: required
+
+install: 
+  - export PATH=$PATH:$HOME/.local/bin
+  - travis_retry pip install --upgrade pip
+  - python --version
+
+services:
+ - docker
+
+before_script:
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+
+script:
+ - cd iris
+ - mvn clean install
+
+after_success:
+ - docker --version
+ - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+ - mv target/iris.war ../docker/
+ - cd $TRAVIS_BUILD_DIR
+ - chmod ugo+x DeployScripts/code_docker_deploy.sh
+ - chmod ugo+x DeployScripts/app_docker_deploy.sh
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/code_docker_deploy.sh
+    on:
+      all_branches: true
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/app_docker_deploy.sh
+    on:
+      tags: true
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/app_docker_deploy.sh 
+    on:
+      branch: master
+  - provider: script
+    skip_cleanup: true
+    script: ./DeployScripts/app_docker_deploy.sh
+    on:
+      branch: dev

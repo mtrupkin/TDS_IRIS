@@ -16,3 +16,10 @@ div#contents .layout_wai {
     position: absolute;
     margin-top: -23px;
 }
+
+.yui-skin-sam .yui-dialog .ft span.default button {
+    color: black;
+}
+.playing_fail{
+    display: none;
+}

@@ -44,7 +44,9 @@
 
 	<context:component-scan base-package="tds.iris.repository" />
 	<context:component-scan base-package="tds.student.sql.singletons" />
-	<context:component-scan base-package="tds.student.services" />
+	<context:component-scan base-package="tds.student.services">
+		<context:exclude-filter type="aspectj" expression="tds.student.services.remote.impl.RemoteExamineeNoteServiceImpl"/>
+	</context:component-scan>
 	<context:component-scan base-package="tds.student.web" />
 	<context:component-scan base-package="tds.student.configuration" />
 	<context:component-scan base-package="tds.itemscoringengine" />

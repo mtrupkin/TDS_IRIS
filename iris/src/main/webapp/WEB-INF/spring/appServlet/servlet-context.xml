@@ -35,7 +35,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="tds.blackbox" />
+	<context:component-scan base-package="tds.blackbox" >
+		<context:exclude-filter type="aspectj" expression="tds.blackbox.web.handlers.BlackBoxRequestHandler"/>
+	</context:component-scan>
 	<context:component-scan base-package="tds.iris.web.handlers" />
 	
 </beans:beans>

@@ -40,7 +40,7 @@ import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.ItemRenderGroup;
 import tds.itemrenderer.webcontrols.PageSettings.UniqueIdType;
 import tds.blackbox.ContentRequestException;
-import tds.student.web.handlers.BaseContentRendererController;
+import tds.blackbox.web.handlers.BaseContentRendererController;
 
 @Scope ("prototype")
 @Controller
