@@ -1,7 +1,9 @@
 language: java
-jdk:
-- oraclejdk7
 sudo: required
+jdk:
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
 
 install: 
   - export PATH=$PATH:$HOME/.local/bin
