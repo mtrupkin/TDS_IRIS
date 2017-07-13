@@ -2,10 +2,8 @@ language: java
 sudo: required
 jdk:
   - openjdk7
-  - oraclejdk7
-  - oraclejdk8
 
-install: 
+install:
   - export PATH=$PATH:$HOME/.local/bin
   - travis_retry pip install --upgrade pip
   - python --version
@@ -42,7 +40,7 @@ deploy:
       tags: true
   - provider: script
     skip_cleanup: true
-    script: ./DeployScripts/app_docker_deploy.sh 
+    script: ./DeployScripts/app_docker_deploy.sh
     on:
       branch: master
   - provider: script
