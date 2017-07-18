@@ -334,7 +334,7 @@ This code implements the XDM API for use within item preview app.
                 TDS.Dialog.showProgress();
                 setAccommodations(token);
                 var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
-                return $.post(url, token, null, 'xml').then(function (data) {
+                $.post(url, token, null, 'xml').then(function (data) {
                     loadContent(data).then(resolve);
                 }).fail(function (xhr, status, error){
                     TDS.Dialog.hideProgress();
@@ -361,8 +361,8 @@ This code implements the XDM API for use within item preview app.
                 TDS.Dialog.showProgress();
                 setAccommodations(token);
                 var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
-                return $.post(url, token, null, 'json').then(function (data) {
-                     return loadGroupedContent(data);
+                $.post(url, token, null, 'json').then(function (data) {
+                     loadGroupedContent(data).then(resolve);
                 }).fail(function (xhr, status, error){
                     TDS.Dialog.hideProgress();
                     reject(error);
