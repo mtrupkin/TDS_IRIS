@@ -334,7 +334,7 @@ This code implements the XDM API for use within item preview app.
                 TDS.Dialog.showProgress();
                 setAccommodations(token);
                 var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
-                return $.post(url, token, null, 'json').then(function (data) {
+                return $.post(url, token, null, 'xml').then(function (data) {
                     resolve(loadContent(data));
                 }).fail(function (xhr, status, error){
                     TDS.Dialog.hideProgress();
@@ -343,6 +343,32 @@ This code implements the XDM API for use within item preview app.
             }
         );
 
+    };
+
+    function loadGroupedContentToken(vendorId, token) {
+        return blackBoxReady.then(function(){
+            return loadGroupedContentTokenPromise(vendorId, token).catch(
+                function(error){
+                    console.log("error: " + error + " with loading token " + token);
+                }
+            );
+        });
+    }
+
+      var loadGroupedContentTokenPromise = function(vendorId, token){
+        return new Promise(
+            function(resolve, reject ) {
+                TDS.Dialog.showProgress();
+                setAccommodations(token);
+                var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
+                return $.post(url, token, null, 'json').then(function (data) {
+                     return loadGroupedContent(data);
+                }).fail(function (xhr, status, error){
+                    TDS.Dialog.hideProgress();
+                    reject(error);
+                });
+            }
+        );
     };
 
     var blackBoxReady = new Promise(
@@ -356,15 +382,6 @@ This code implements the XDM API for use within item preview app.
             }
         }
     );
-
-    function loadGroupedContentToken(vendorId, token) {
-        TDS.Dialog.showProgress();
-        var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
-        setAccommodations(token);
-        return $.post(url, token, null, 'json').then(function (data) {
-            return loadGroupedContent(data);
-        });
-    }
 
     function setItemResponse(item, response) {
         if (item && item instanceof ContentItem) {
