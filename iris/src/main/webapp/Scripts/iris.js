@@ -319,19 +319,26 @@ This code implements the XDM API for use within item preview app.
 
     function loadToken(vendorId, token) {
        return blackBoxReady.then(function(){
-           return loadContentPromise(vendorId, token)
+           return loadContentPromise(vendorId, token).catch(
+               function(error){
+                   console.log("error: " + error + " with loading token " + token);
+               }
+           );
        });
     }
 
     var loadContentPromise = function(vendorId, token){
         return new Promise(
-            function(resolve) {
+            function(resolve, reject ) {
                 Messages.set('TDS.WordList.illustration', 'Illustration', 'ENU');
                 TDS.Dialog.showProgress();
                 setAccommodations(token);
                 var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
                 return $.post(url, token, null, 'text').then(function (data) {
                     resolve(loadContent(data));
+                }).fail(function (xhr, status, error){
+                    TDS.Dialog.hideProgress();
+                    reject(error);
                 });
             }
         );
