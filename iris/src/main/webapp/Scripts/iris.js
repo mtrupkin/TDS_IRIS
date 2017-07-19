@@ -4,6 +4,7 @@ This code implements the XDM API for use within item preview app.
 
 (function (XDM, CM) {
 
+    var isIrisReady = false;
 
     // we load one page in advance, but we don't want that to cause a cascade of page show/load
     Blackbox.getConfig().preventShowOnLoad = true;
@@ -54,11 +55,8 @@ This code implements the XDM API for use within item preview app.
         }
     };
 
-
     // setup cross domain api 
     XDM.init(window);
-
-
 
     function getItemId(item) {
         return "I-" + item.bankKey + "-" + item.itemKey;
@@ -169,7 +167,6 @@ This code implements the XDM API for use within item preview app.
             comments(ev);
         });
 
-
         if (TDS.getAccommodationProperties().hasMaskingEnabled()) {
             Blackbox.showButton('btnMask', showMask, true);
         }
@@ -245,7 +242,6 @@ This code implements the XDM API for use within item preview app.
     }
 
     function loadGroupedContent(xmlDoc) {
-
         if (CM.getPages().length > 0) {
             throw new Error("content has already been loaded; cannot load grouped content");
         }
@@ -322,23 +318,84 @@ This code implements the XDM API for use within item preview app.
     }
 
     function loadToken(vendorId, token) {
-        Messages.set('TDS.WordList.illustration', 'Illustration', 'ENU');
-        TDS.Dialog.showProgress();
-        var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
-        setAccommodations(token);
-        return $.post(url, token, null, 'text').then(function (data) {
-            return loadContent(data);
-        });
+       var deferred = $.Deferred();
+       blackBoxReady.then(function(){
+           loadContentPromise(vendorId, token)
+               .then(function(value) {
+                   deferred.resolve(value)
+               })
+               .catch(function(error){
+                   var errorMsg = "error: " + error + " with loading token " + token;
+                   console.log(errorMsg);
+                   deferred.reject(errorMsg);
+               }
+           );
+       });
+       return deferred;
     }
 
+    var loadContentPromise = function(vendorId, token){
+        return new Promise(
+            function(resolve, reject ) {
+                Messages.set('TDS.WordList.illustration', 'Illustration', 'ENU');
+                TDS.Dialog.showProgress();
+                setAccommodations(token);
+                var url = irisUrl + '/Pages/API/content/load?id=' + vendorId;
+                $.post(url, token, null, 'xml').then(function (data) {
+                    loadContent(data).then(resolve);
+                }).fail(function (xhr, status, error){
+                    TDS.Dialog.hideProgress();
+                    reject(error);
+                });
+            }
+        );
+
+    };
+
     function loadGroupedContentToken(vendorId, token) {
-        TDS.Dialog.showProgress();
-        var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
-        setAccommodations(token);
-        return $.post(url, token, null, 'text').then(function (data) {
-            return loadGroupedContent(data);
+        var deferred = $.Deferred();
+        blackBoxReady.then(function(){
+            return loadGroupedContentTokenPromise(vendorId, token)
+                .then(function(value) {
+                    deferred.resolve(value);
+                })
+                .catch(function(error){
+                    var errorMsg = "error: " + error + " with loading token " + token;
+                    console.log(errorMsg);
+                    deferred.reject(errorMsg);
+                }
+            );
         });
+        return deferred;
     }
+
+      var loadGroupedContentTokenPromise = function(vendorId, token){
+        return new Promise(
+            function(resolve, reject ) {
+                TDS.Dialog.showProgress();
+                setAccommodations(token);
+                var url = location.href + '/Pages/API/content/loadContent?id=' + vendorId;
+                $.post(url, token, null, 'json').then(function (data) {
+                     loadGroupedContent(data).then(resolve);
+                }).fail(function (xhr, status, error){
+                    TDS.Dialog.hideProgress();
+                    reject(error);
+                });
+            }
+        );
+    };
+
+    var blackBoxReady = new Promise(
+        function(resolve){
+            if(isIrisReady){
+                resolve(true);
+            }else{
+                Blackbox.events.on('ready', function () {
+                    resolve(true);
+                });
+            }
+        }
+    );
 
     function setItemResponse(item, response) {
         if (item && item instanceof ContentItem) {
@@ -389,7 +446,9 @@ This code implements the XDM API for use within item preview app.
                 throw new Error('item position and id do not match');
             }
 
-            setItemResponse(itemFromPosition || itemFromId, itemResponse.response);
+            if (typeof itemResponse.response !== "undefined") {
+                setItemResponse( itemFromPosition || itemFromId, itemResponse.response );
+            }
 
             if (itemResponse.label) {
                 setItemLabel(itemFromPosition || itemFromId, itemResponse.label);
@@ -498,9 +557,9 @@ This code implements the XDM API for use within item preview app.
     XDM.addListener('IRiS:showNext', showNext);
     XDM.addListener('IRiS:showPrev', showPrev);
 
-    /* Following is throwing error, not a blocker though
-     * Blackbox.events.on('ready', function () {
-        XDM(window.parent).post('IRiS:ready');
-    });*/
+    Blackbox.events.on('ready', function () {
+        Blackbox.fireEvent('IRiS:Ready')
+        isIrisReady = true;
+    });
 
 })(window.Util.XDM, window.ContentManager);
