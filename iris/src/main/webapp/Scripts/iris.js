@@ -318,13 +318,20 @@ This code implements the XDM API for use within item preview app.
     }
 
     function loadToken(vendorId, token) {
-       return blackBoxReady.then(function(){
-           return loadContentPromise(vendorId, token).catch(
-               function(error){
-                   console.log("error: " + error + " with loading token " + token);
+       var deferred = $.Deferred();
+       blackBoxReady.then(function(){
+           loadContentPromise(vendorId, token)
+               .then(function(value) {
+                   deferred.resolve(value)
+               })
+               .catch(function(error){
+                   var errorMsg = "error: " + error + " with loading token " + token;
+                   console.log(errorMsg);
+                   deferred.reject(errorMsg);
                }
            );
        });
+       return deferred;
     }
 
     var loadContentPromise = function(vendorId, token){
@@ -346,13 +353,20 @@ This code implements the XDM API for use within item preview app.
     };
 
     function loadGroupedContentToken(vendorId, token) {
-        return blackBoxReady.then(function(){
-            return loadGroupedContentTokenPromise(vendorId, token).catch(
-                function(error){
-                    console.log("error: " + error + " with loading token " + token);
+        var deferred = $.Deferred();
+        blackBoxReady.then(function(){
+            return loadGroupedContentTokenPromise(vendorId, token)
+                .then(function(value) {
+                    deferred.resolve(value);
+                })
+                .catch(function(error){
+                    var errorMsg = "error: " + error + " with loading token " + token;
+                    console.log(errorMsg);
+                    deferred.reject(errorMsg);
                 }
             );
         });
+        return deferred;
     }
 
       var loadGroupedContentTokenPromise = function(vendorId, token){
