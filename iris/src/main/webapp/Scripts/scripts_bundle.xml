@@ -1,0 +1,37 @@
+
+<resources>
+    <import>scripts_blackbox.xml</import>
+    <fileset name="calculator">
+        <input>Calculator/calculator.js</input>
+    </fileset>
+    <fileset name="dictionary">
+        <input>Dictionary/dictionary.js</input>
+    </fileset>
+    <fileset name="mask">
+        <input>Mask/masking.js</input>
+    </fileset>
+    <fileset name="notes">
+        <input>Notes/main.js</input>
+        <input>Notes/base.js</input>
+        <input>Notes/dialog.js</input>
+        <input>Notes/dropdown.js</input>
+        <input>Notes/equation.js</input>
+        <input>Notes/factory.js</input>
+        <input>Notes/scratchpad.js</input>
+        <input>Notes/textarea.js</input>
+    </fileset>
+    <fileSet name="iris-blackbox-handler">
+    <input>Blackbox/blackbox_messages_SBAC.js</input> 
+    <input>Blackbox/blackbox.js</input>
+    <input>Blackbox/blackbox_seed.js</input>
+  </fileSet>
+    <fileset name="iris-combined" compress="false" output="iris.combined.js">
+        <input>iris.top.js</input>
+        <reference set="modern"/>
+        <reference set="iris-blackbox-handler"/>
+        <reference set="calculator"/>
+        <reference set="dictionary"/>
+        <reference set="mask"/>
+        <reference set="notes"/>
+    </fileset>
+</resources>
