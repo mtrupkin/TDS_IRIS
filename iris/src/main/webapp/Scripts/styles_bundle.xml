@@ -1,0 +1,52 @@
+<resources>
+    <import>scripts_blackbox.xml</import>
+    <fileset name="skins">
+        <input>Libraries/YUI/assets/skins/sam/menu.css</input>
+        <input>Libraries/YUI/assets/skins/sam/button.css</input>
+        <input>Libraries/YUI/assets/skins/sam/container.css</input>
+        <input>Libraries/YUI/assets/skins/sam/resize.css</input>
+    </fileset>
+    <fileset name="shell">
+        <input>../IrisStyles/Universal/frame.css</input>
+        <input>../Shared/CSS/normalize.css</input>
+        <input>../IrisStyles/Universal/shell.css</input>
+        <input>../IrisStyles/dialogs.css</input>
+        <input>../IrisStyles/accommodations.css</input>
+        <input>../Projects/SBAC/css/modernShell.css</input>
+    </fileset>
+    <fileset name="content">
+        <input>../IrisStyles/items.css</input>
+        <input>../Shared/CSS/elpa.css</input>
+        <input>../IrisStyles/Universal/items.css</input>
+        <input>../Projects/SBAC/css/modernItems.css</input>
+    </fileset>
+    <fileset name="module">
+        <input>../IrisStyles/responserecovery.css</input>
+    </fileset>
+    <fileset name="widget">
+        <input>Interaction/CSS/interaction.css</input>
+        <input>EquationEditor3/eq_editor.css</input>
+        <input>EquationEditor3/custom_eq_editor.css</input>
+        <input>LineReader/lineReader.css</input>
+        <input>MatchItem/mi.css</input>
+        <input>Slideshow2/show.css</input>
+        <input>Mask/mask.css</input>
+        <input>Simulator2/Renderer/CSS/simulator.css</input>
+        <input>Simulator2/Renderer/CSS/slider.css</input>
+        <input>HTMLEditor2/editor.css</input>
+        <input>EditTask/edit.css</input>
+        <input>Scaffolding/asi.css</input>
+        <input>EBSR/ebsr.css</input>
+        <input>TableInput/base.css</input>
+        <input>Scratchpad/scratchpad.css</input>
+        <input>Moogle/CSS/moogle.css</input>
+        <input>Audio2/ClosedCaptioning.css</input>
+    </fileset>
+    <fileset name="blackboxstylescombined" compress="false" output="iris.styles.combined.css">
+        <reference set="skins"/>
+        <reference set="shell"/>
+        <reference set="content"/>
+        <reference set="module"/>
+        <reference set="widget"/>
+    </fileset>
+</resources>

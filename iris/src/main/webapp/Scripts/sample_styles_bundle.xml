@@ -1,0 +1,12 @@
+<resources>
+    <import>scripts_blackbox.xml</import>
+    <fileset name="sample">
+        <input>../IrisStyles/style.css</input>
+        <input>../IrisStyles/pagenavi-css.css</input>
+        <input>../IrisStyles/jd.css</input>
+        <input>../IrisStyles/jd_002.css</input>
+    </fileset>
+    <fileset name="blackboxstylescombined" compress="false" output="iris.samplestyles.combined.css">
+        <reference set="sample"/>
+    </fileset>
+</resources>
