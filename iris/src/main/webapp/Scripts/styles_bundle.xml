@@ -7,21 +7,20 @@
         <input>Libraries/YUI/assets/skins/sam/resize.css</input>
     </fileset>
     <fileset name="shell">
-        <input>../IrisStyles/Universal/frame.css</input>
+        <input>../Shared/CSS/frame.css</input>
         <input>../Shared/CSS/normalize.css</input>
-        <input>../IrisStyles/Universal/shell.css</input>
-        <input>../IrisStyles/dialogs.css</input>
-        <input>../IrisStyles/accommodations.css</input>
+        <input>../Shared/CSS/testShell.css</input>
+        <input>../Shared/CSS/dialogs.css</input>
+        <input>../Shared/CSS/accommodations.css</input>
         <input>../Projects/SBAC/css/modernShell.css</input>
     </fileset>
     <fileset name="content">
-        <input>../IrisStyles/items.css</input>
+        <input>../Shared/CSS/items.css</input>
         <input>../Shared/CSS/elpa.css</input>
-        <input>../IrisStyles/Universal/items.css</input>
         <input>../Projects/SBAC/css/modernItems.css</input>
     </fileset>
     <fileset name="module">
-        <input>../IrisStyles/responserecovery.css</input>
+        <input>ResponseRecovery/responserecovery.css</input>
     </fileset>
     <fileset name="widget">
         <input>Interaction/CSS/interaction.css</input>
