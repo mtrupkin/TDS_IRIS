@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import AIR.Common.Utilities.SpringApplicationContext;
@@ -46,64 +47,15 @@ public class ContentHelper implements IContentHelper {
     public synchronized void init() throws ContentException {
         _contentBuilder = SpringApplicationContext.getBean("iContentBuilder", IContentBuilder.class);
         reloadContent();
-    }
+        ContentWatcher contentThread = SpringApplicationContext.getBean("contentWatcher", ContentWatcher.class);
+        contentThread.start();
 
-
-    public WatchService createWatcher() throws Exception {
-        WatchService watcher = null;
-        //create watcher to watch file directory for changes
-        try {
-            watcher = FileSystems.getDefault().newWatchService();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        Path dir = Paths.get("C:\\content\\Items");
-        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
-
-        return watcher;
-    }
-
-    public void watchForChange() throws Exception {
-        WatchService watcher = createWatcher();
-        //create infinite while loop to track changes in the directory
-        while(true){
-            WatchKey key = null;
-            try{
-                key = watcher.take();
-            }catch(InterruptedException ex){
-                return;
-            }
-            for(WatchEvent<?> event : key.pollEvents()){
-                //get event type
-                WatchEvent.Kind<?> kind = event.kind();
-
-                //get file name
-                WatchEvent<Path> ev = (WatchEvent<Path>) event;
-                //Path fileName = ev.context();
-
-                if(kind == OVERFLOW){
-                    continue;
-                }else{
-                    //reload content if there was a change
-                    try{
-                        reloadContent();
-                    }catch (Exception e){}
-                }
-            }
-            boolean valid = key.reset();
-            if(!valid){
-                break;
-            }
-        }
     }
 
     @Override
     public ItemRenderGroup loadRenderGroup(ContentRequest contentRequest) {
         //watch the directory for changes to the files
-        try{
-            watchForChange();
-        }catch(Exception e) {}
+
 
         String id = "Page-" + UUID.randomUUID().toString();
         ItemRenderGroup itemRenderGroup = new ItemRenderGroup(id, "default", "ENU");
