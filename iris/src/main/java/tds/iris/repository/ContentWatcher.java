@@ -40,7 +40,7 @@ public class ContentWatcher extends Thread{
         }
 
         Path dir = Paths.get("C:\\content\\Items");
-        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE);
 
         return watcher;
     }
@@ -55,25 +55,12 @@ public class ContentWatcher extends Thread{
             }catch(InterruptedException ex){
                 return;
             }
-            for(WatchEvent<?> event : key.pollEvents()){
-                //get event type
-                WatchEvent.Kind<?> kind = event.kind();
 
-                //get file name
-                WatchEvent<Path> ev = (WatchEvent<Path>) event;
-                //Path fileName = ev.context();
-
-                if(kind == OVERFLOW){
-                    continue;
-                }else{
-                    //reload content if there was a change
-                    try{
-                        _logger.info("content reload");
-                        _contentHelper.reloadContent();
-
-                    }catch (Exception e){}
-                }
+            if(key.pollEvents().size() > 0){
+                _logger.info("content reload");
+                _contentHelper.reloadContent();
             }
+
             boolean valid = key.reset();
             if(!valid){
                 break;
