@@ -15,5 +15,7 @@ public interface IContentBuilder
 {
   public IITSDocument getITSDocument (String id);
   public IITSDocument getITSDocumentAcc (String id, AccLookup accLookup);
+  public void loadFile (String fileName) throws ContentException;
+  public void removeFile(String fileName) throws ContentException;
   public void init () throws ContentException;
 }
