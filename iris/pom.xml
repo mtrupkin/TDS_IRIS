@@ -8,7 +8,7 @@
 	<name>iris</name>
 
     <properties>
-		<tds-item-renderer.version>3.1.4.RELEASE</tds-item-renderer.version>
+		<tds-item-renderer.version>3.2.0</tds-item-renderer.version>
     </properties>
 
 	<!-- Artifactory for the Smarter Balanced Iris -->

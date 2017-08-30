@@ -150,8 +150,19 @@ public class ContentHelper implements IContentHelper {
     }
 
     @Override
+    //reload all of the content within the directory
     public boolean reloadContent() throws ContentException {
         _contentBuilder.init();
         return true;
+    }
+
+    //add the file that was created to the watched directory
+    public void addFile(String fileName) {
+        _contentBuilder.loadFile(fileName);
+    }
+
+    //remove the file that was deleted from the watched directory
+    public void removeFile(String fileName) {
+        _contentBuilder.removeFile(fileName);
     }
 }

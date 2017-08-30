@@ -42,6 +42,7 @@ public class ContentWatcher extends Thread{
         Path dir = Paths.get("C:\\content\\Items");
         dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE);
 
+
         return watcher;
     }
 
@@ -56,9 +57,15 @@ public class ContentWatcher extends Thread{
                 return;
             }
 
-            if(key.pollEvents().size() > 0){
-                _logger.info("content reload");
-                _contentHelper.reloadContent();
+            //for each event, check what type of event happened within the directory
+            for(WatchEvent event : key.pollEvents()){
+                Path dir = (Path)key.watchable();
+                if(event.kind() == ENTRY_CREATE){
+                    Path fullPath = dir.resolve(event.context().toString());
+                    _contentHelper.addFile(fullPath.toString());
+                } else if(event.kind() == ENTRY_DELETE) {
+                    _contentHelper.removeFile(event.context().toString());
+                }
             }
 
             boolean valid = key.reset();

@@ -13,9 +13,12 @@ import java.nio.file.*;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
 
+import AIR.Common.Configuration.AppSetting;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -28,6 +31,7 @@ import tds.blackbox.ContentRequestException;
 import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
 import tds.itempreview.ConfigBuilder;
+import tds.itempreview.Content;
 import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.IITSDocument;
 import tds.itemrenderer.data.IrisITSDocument;
@@ -55,10 +59,29 @@ public class ContentBuilder implements IContentBuilder {
             _logger.error("Error loading IRiS content.", exp);
             throw new ContentException(exp);
         }
-
     }
 
+    //add a new file to the directory
+    public synchronized void loadFile(String fileName) {
+        _contentPath = fileName;
+        try {
+            _directoryScanner.addFile(_contentPath);
+        } catch (Exception e) {
+            _logger.error("Error loading IRiS content.", e);
+            throw new ContentException(e);
+        }
+    }
 
+    //remove a file from the directory
+    public synchronized void removeFile(String fileName) {
+        _contentPath = fileName;
+        try {
+            _directoryScanner.removeFile(fileName);
+        } catch (Exception e) {
+            _logger.error("Error loading IRiS content.", e);
+            throw new ContentException(e);
+        }
+    }
 
     @Override
     public IITSDocument getITSDocument(String id) throws ContentRequestException {
@@ -68,5 +91,6 @@ public class ContentBuilder implements IContentBuilder {
     @Override
     public IITSDocument getITSDocumentAcc(String id, AccLookup accLookup) {
         return _directoryScanner.getRenderableDocument(id, accLookup);
+
     }
 }
