@@ -9,7 +9,8 @@
 
     <properties>
 		<tds-item-renderer.version>3.1.4.RELEASE</tds-item-renderer.version>
-    </properties>
+		<tds-item-renderer-exclude.version>3.1.1</tds-item-renderer-exclude.version>
+	</properties>
 
 	<!-- Artifactory for the Smarter Balanced Iris -->
 	<repositories>
@@ -236,8 +237,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<warSourceExcludes>WEB-INF/lib/item-renderer-0.0.1.jar</warSourceExcludes>
-					<packagingExcludes>WEB-INF/lib/item-renderer-0.0.1.jar</packagingExcludes>
+					<warSourceExcludes>WEB-INF/lib/item-renderer-${tds-item-renderer-exclude.version}.jar</warSourceExcludes>
+					<packagingExcludes>WEB-INF/lib/item-renderer-${tds-item-renderer-exclude.version}.jar</packagingExcludes>
 					<webResources>
 					</webResources>
 				</configuration>
