@@ -3,7 +3,7 @@ if (typeof blackboxConfig != 'object') blackboxConfig = {};
 blackboxConfig.baseUrl = '/';
 blackboxConfig.client = 'SBAC';
 blackboxConfig.testShellName = 'modern';
-blackboxConfig.testShellHtml = '  <div id="topBar">    <a href="#contents" id="skipNav" tabindex="0">Skip navigation</a>    <div id="infoBar" role="banner">    <div id="jumpQuestions">     <label id="jumpLabel" i18n-content="TestShellModern.Label.Items">Items:</label> <select id="ddlNavigation" name="ddlNavigation" aria-labelledby="jumpLabel"></select> <input id="jumpGo" type="button" value="Go" aria-label="Press enter to jump to question" style="display: none;" />    </div>    <h1 id="lblTestName"></h1>    <h2 id="lblStudentName"></h2>    <span class="sessionID"></span>    <div id="smallButtons">     <a href="#" id="btnHelp" aria-haspopup="true">Help</a> <a href="#" id="btnSettings" aria-haspopup="true">Settings</a> <a href="#" id="proctorLogout" aria-hidden="true" style="display: none;">Log      Out</a>    </div>   </div>    <nav id="navigation" role="navigation">   <ul id="studentControls"></ul>   <div id="soundCues"></div>   <ul id="studentTools"></ul>   </nav>  </div>   <!-- alertActive shows the dialog, alertClosed is added after a student dismisses the dialog <div class="alertBar alertActive" role="alertdialog"> <div class="alertBar alertActive alertClosed" role="alertdialog"> -->  <div class="alertBar alertClosed" aria-live="assertive" aria-atomic="true">   <a href="#" class="alertDismiss" role="button" aria-expanded="false"> <span class="alertDismissOpen">Open alerts</span> <span class="alertDismissClose">Close alerts</span>   </a>   <ul class="alertContent" aria-relevant="additions"></ul>  </div>   <div id="contents" role="main">   <div id="reviews"></div>  </div>   <div id="tool-ClosedCaptioning" class="tdsClosedCaptioning" aria-live="polite" aria-label="Captioning for current audio"></div>';
+blackboxConfig.testShellHtml = '  <div id="topBar">    <a href="#contents" id="skipNav" tabindex="0">Skip navigation</a>     <nav id="navigation" role="navigation">   <ul id="studentControls"></ul>   <div id="soundCues"></div>   <ul id="studentTools"></ul>   </nav>  </div>   <!-- alertActive shows the dialog, alertClosed is added after a student dismisses the dialog <div class="alertBar alertActive" role="alertdialog"> <div class="alertBar alertActive alertClosed" role="alertdialog"> -->  <div class="alertBar alertClosed" aria-live="assertive" aria-atomic="true">   <a href="#" class="alertDismiss" role="button" aria-expanded="false"> <span class="alertDismissOpen">Open alerts</span> <span class="alertDismissClose">Close alerts</span>   </a>   <ul class="alertContent" aria-relevant="additions"></ul>  </div>   <div id="contents" role="main">   <div id="reviews"></div>  </div>   <div id="tool-ClosedCaptioning" class="tdsClosedCaptioning" aria-live="polite" aria-label="Captioning for current audio"></div>';
 blackboxConfig.testShellToolbars = {
 	"controls": 
 	{
@@ -191,12 +191,12 @@ blackboxConfig.testShellToolbars = {
 	{
 		"modern":
 		{
-			"controls": ["save", "back", "next", "pause", "end", "itemscore", "results"],
+			"controls": [],
 			"tools": ["contextmenu", "zoomin", "zoomout", "print", "linereader", "notes", "calculator", "formula", "periodictable", "dictionary", "masking", "ruler", "protractor", "rubric"]
 		},
 		"universal": 
 		{
-			"controls": ["back", "next", "save", "pause", "end", "itemscore", "results"],
+			"controls": [],
 			"tools": ["rubric", "protractor", "ruler", "masking", "dictionary", "periodictable", "formula", "calculator", "notes", "linereader", "print", "printpage", "zoomout", "zoomin", "contextmenu"]
 		}
 	}
