@@ -4,12 +4,12 @@
 	<groupId>org.opentestsystem.delivery</groupId>
 	<artifactId>iris</artifactId>
 	<packaging>war</packaging>
-	<version>3.1.0</version>
+	<version>3.2.0</version>
 	<name>iris</name>
 
     <properties>
 		<tds-item-renderer.version>3.2.0</tds-item-renderer.version>
-		<tds-item-renderer-exclude.version>3.1.1</tds-item-renderer-exclude.version>
+		<tds-item-renderer-exclude.version>3.1.1.RELEASE</tds-item-renderer-exclude.version>
 	</properties>
 
 	<!-- Artifactory for the Smarter Balanced Iris -->
