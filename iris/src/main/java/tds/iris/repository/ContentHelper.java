@@ -100,6 +100,21 @@ public class ContentHelper implements IContentHelper {
         return itemRenderGroup;
     }
 
+
+    public ItemRenderGroup loadTutorial(long bankKey, long itemKey, String language) {
+
+        String id = "Page-" + UUID.randomUUID().toString();
+        ItemRenderGroup itemRenderGroup = new ItemRenderGroup(id, "default", language);
+        String itemId = String.format ("I-%s-%s", bankKey, itemKey);
+        IITSDocument document = _contentBuilder.getITSDocument(itemId);
+
+        if (document != null) {
+            IItemRender itemRender = new ItemRender(document, (int) document.getItemKey());
+            itemRenderGroup.add(itemRender);
+        }
+        return itemRenderGroup;
+    }
+
     public ItemRenderGroup loadRenderGroupAcc(ContentRequest contentRequest, AccLookup accLookup) {
         String id = "Page-" + UUID.randomUUID().toString();
         AccProperties accProperties = new AccProperties(accLookup);
