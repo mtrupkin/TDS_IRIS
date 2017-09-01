@@ -11,6 +11,7 @@ package tds.iris.repository;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.UUID;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.annotation.PostConstruct;
 
@@ -39,6 +40,7 @@ import static java.nio.file.StandardWatchEventKinds.OVERFLOW;
 @Component
 @Scope("singleton")
 public class ContentHelper implements IContentHelper {
+    ReentrantLock lock = new ReentrantLock();
     private static final Logger _logger = LoggerFactory.getLogger(ContentHelper.class);
 
     private IContentBuilder _contentBuilder;
@@ -101,52 +103,56 @@ public class ContentHelper implements IContentHelper {
     }
 
     public ItemRenderGroup loadRenderGroupAcc(ContentRequest contentRequest, AccLookup accLookup) {
+        lock.lock();
         String id = "Page-" + UUID.randomUUID().toString();
         AccProperties accProperties = new AccProperties(accLookup);
         ItemRenderGroup itemRenderGroup = new ItemRenderGroup(id, "default", accProperties.getLanguage());
 
         // load passage
         boolean reloadPassage = true;
-        if (contentRequest.getPassage() != null) {
-            String requestedPassageId = contentRequest.getPassage().getId();
-            // we will not attempt to load a passage
-            // if we already have a passage as part of the request or if we have
-            // been explicitly asked not to load a passage
-            if (!StringUtils.isEmpty(requestedPassageId)) {
-                itemRenderGroup.setPassage(_contentBuilder.getITSDocumentAcc(requestedPassageId, accLookup));
-                reloadPassage = false;
-            } else if (!contentRequest.getPassage().getAutoLoad()) {
-                reloadPassage = false;
-            }
-        }
-
-        if (contentRequest.getItems() != null) {
-            long stimulusKey = 0;
-            long bankKey = 0;
-
-            for (ContentRequestItem item : contentRequest.getItems()) {
-                IITSDocument document = _contentBuilder.getITSDocumentAcc(item.getId(), accLookup);
-                if (document != null) {
-                    IItemRender itemRender = new ItemRender(document, (int) document.getItemKey());
-
-                    itemRender.setDisabled(false);
-
-                    itemRenderGroup.add(itemRender);
-
-
-                    if (stimulusKey == 0 && document.getStimulusKey() > 0) {
-                        // set to the first non-zero stimulus
-                        stimulusKey = document.getStimulusKey();
-                        bankKey = document.getBankKey();
-                    }
+        try {
+            if (contentRequest.getPassage() != null) {
+                String requestedPassageId = contentRequest.getPassage().getId();
+                // we will not attempt to load a passage
+                // if we already have a passage as part of the request or if we have
+                // been explicitly asked not to load a passage
+                if (!StringUtils.isEmpty(requestedPassageId)) {
+                    itemRenderGroup.setPassage(_contentBuilder.getITSDocumentAcc(requestedPassageId, accLookup));
+                    reloadPassage = false;
+                } else if (!contentRequest.getPassage().getAutoLoad()) {
+                    reloadPassage = false;
                 }
             }
 
-            if (reloadPassage && stimulusKey > 0)
-                itemRenderGroup.setPassage(_contentBuilder.getITSDocumentAcc(ItsItemIdUtil.getItsDocumentId(bankKey, stimulusKey, ITSEntityType.Passage), accLookup));
-        }
+            if (contentRequest.getItems() != null) {
+                long stimulusKey = 0;
+                long bankKey = 0;
 
-        return itemRenderGroup;
+                for (ContentRequestItem item : contentRequest.getItems()) {
+                    IITSDocument document = _contentBuilder.getITSDocumentAcc(item.getId(), accLookup);
+                    if (document != null) {
+                        IItemRender itemRender = new ItemRender(document, (int) document.getItemKey());
+
+                        itemRender.setDisabled(false);
+
+                        itemRenderGroup.add(itemRender);
+
+
+                        if (stimulusKey == 0 && document.getStimulusKey() > 0) {
+                            // set to the first non-zero stimulus
+                            stimulusKey = document.getStimulusKey();
+                            bankKey = document.getBankKey();
+                        }
+                    }
+                }
+
+                if (reloadPassage && stimulusKey > 0)
+                    itemRenderGroup.setPassage(_contentBuilder.getITSDocumentAcc(ItsItemIdUtil.getItsDocumentId(bankKey, stimulusKey, ITSEntityType.Passage), accLookup));
+            }
+        } finally {
+            lock.unlock();
+            return itemRenderGroup;
+        }
     }
 
     @Override
@@ -157,12 +163,12 @@ public class ContentHelper implements IContentHelper {
     }
 
     //add the file that was created to the watched directory
-    public void addFile(String fileName) {
+    public synchronized void addFile(String fileName) {
         _contentBuilder.loadFile(fileName);
     }
 
     //remove the file that was deleted from the watched directory
-    public void removeFile(String fileName) {
+    public synchronized void removeFile(String fileName) {
         _contentBuilder.removeFile(fileName);
     }
 }

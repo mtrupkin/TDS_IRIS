@@ -48,8 +48,10 @@ public class ContentBuilder implements IContentBuilder {
     private static final Logger _logger = LoggerFactory.getLogger(ContentBuilder.class);
     private String _contentPath;
     private ConfigBuilder _directoryScanner = null;
+    ReentrantLock lock = new ReentrantLock();
 
     public synchronized void init() throws ContentException {
+        lock.lock();
         try {
             // scan the local folder.
             _contentPath = AppSettingsHelper.get("iris.ContentPath");
@@ -58,28 +60,36 @@ public class ContentBuilder implements IContentBuilder {
         } catch (Exception exp) {
             _logger.error("Error loading IRiS content.", exp);
             throw new ContentException(exp);
+        } finally{
+            lock.unlock();
         }
     }
 
     //add a new file to the directory
     public synchronized void loadFile(String fileName) {
+        lock.lock();
         _contentPath = fileName;
         try {
             _directoryScanner.addFile(_contentPath);
         } catch (Exception e) {
             _logger.error("Error loading IRiS content.", e);
             throw new ContentException(e);
+        } finally{
+            lock.unlock();
         }
     }
 
     //remove a file from the directory
     public synchronized void removeFile(String fileName) {
+        lock.lock();
         _contentPath = fileName;
         try {
             _directoryScanner.removeFile(fileName);
         } catch (Exception e) {
             _logger.error("Error loading IRiS content.", e);
             throw new ContentException(e);
+        } finally {
+            lock.unlock();
         }
     }
 
