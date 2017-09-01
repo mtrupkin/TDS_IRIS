@@ -30,11 +30,6 @@ after_success:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ./DeployScripts/code_docker_deploy.sh
-    on:
-      all_branches: true
-  - provider: script
-    skip_cleanup: true
     script: ./DeployScripts/app_docker_deploy.sh
     on:
       tags: true

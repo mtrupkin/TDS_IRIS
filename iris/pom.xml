@@ -4,8 +4,13 @@
 	<groupId>org.opentestsystem.delivery</groupId>
 	<artifactId>iris</artifactId>
 	<packaging>war</packaging>
-	<version>2.1.2</version>
+	<version>3.2.0</version>
 	<name>iris</name>
+
+    <properties>
+		<tds-item-renderer.version>3.2.0.RELEASE</tds-item-renderer.version>
+		<tds-item-renderer-exclude.version>3.1.1.RELEASE</tds-item-renderer-exclude.version>
+	</properties>
 
 	<!-- Artifactory for the Smarter Balanced Iris -->
 	<repositories>
@@ -26,7 +31,7 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>student-library</artifactId>
-			<version>3.0.6</version>
+			<version>3.1.1.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.opentestsystem.delivery</groupId>
@@ -38,26 +43,26 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-renderer</artifactId>
-			<version>2.3.11</version>
+			<version>${tds-item-renderer.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-renderer-web</artifactId>
-			<version>2.3.11</version>
+			<version>${tds-item-renderer.version}</version>
 			<type>war</type>
 		</dependency>
 
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>spellcheck</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>student</artifactId>
-			<version>2.1.1</version>
+			<version>3.1.1.RELEASE</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.opentestsystem.shared</groupId>
@@ -94,67 +99,67 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-aironline</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-web</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-tr-api</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-logging</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-threading</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-test</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-api</artifactId>
-			<version>3.0.0</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mssql</artifactId>
-			<version>3.0.0</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mysql</artifactId>
-			<version>3.0.0</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-common</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-scoring-api</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>item-scoring-engine</artifactId>
-			<version>3.0.1</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>testscoring</artifactId>
-			<version>3.0.0</version>
+			<version>3.1.1.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -232,8 +237,8 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
-					<warSourceExcludes>WEB-INF/lib/item-renderer-0.0.1.jar</warSourceExcludes>
-					<packagingExcludes>WEB-INF/lib/item-renderer-0.0.1.jar</packagingExcludes>
+					<warSourceExcludes>WEB-INF/lib/item-renderer-${tds-item-renderer-exclude.version}.jar</warSourceExcludes>
+					<packagingExcludes>WEB-INF/lib/item-renderer-${tds-item-renderer-exclude.version}.jar</packagingExcludes>
 					<webResources>
 					</webResources>
 				</configuration>

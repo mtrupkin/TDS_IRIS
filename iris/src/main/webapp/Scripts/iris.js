@@ -5,14 +5,15 @@ This code implements the XDM API for use within item preview app.
 (function (XDM, CM) {
 
     var isIrisReady = false;
-
-    // we load one page in advance, but we don't want that to cause a cascade of page show/load
-    Blackbox.getConfig().preventShowOnLoad = true;
-
-    //This sets read only mode on the content manager disabling the answer entry areas.
-    CM.setReadOnly(true);
     //Adding this onto TDS for now so it is available in the dictionary handler.
     var irisUrl = location.href;
+    // we load one page in advance, but we don't want that to cause a cascade of page show/load
+    Blackbox.getConfig().preventShowOnLoad = true;
+    Blackbox.getConfig().baseUrl = irisUrl;
+    ContentManager.Dialog.urlFrame = "Pages/DialogFrame.aspx";
+    //This sets read only mode on the content manager disabling the answer entry areas.
+    CM.setReadOnly(true);
+
     // Functions that are used by toolbar buttons
 
     //Calculator

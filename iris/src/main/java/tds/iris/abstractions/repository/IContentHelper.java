@@ -16,5 +16,8 @@ public interface IContentHelper
 {
   public ItemRenderGroup loadRenderGroup (ContentRequest contentRequest);
   public ItemRenderGroup loadRenderGroupAcc (ContentRequest contentRequest, AccLookup accLookup);
+  public ItemRenderGroup loadTutorial(long bankKey, long itemKey, String language);
   public boolean reloadContent ();
+  public void addFile(String fileName);
+  public void removeFile(String fileName);
 }

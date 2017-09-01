@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:tds="http://airast.org/jsfcustom"
-	xmlns:p="http://java.sun.com/jsf/passthrough">
+	  xmlns:p="http://java.sun.com/jsf/passthrough">
 <h:head>
 	<!-- set character encoding -->
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,28 +11,29 @@
 
 	<!-- Prevents scaling -->
 	<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no" />
-	<!-- YUI Styles -->
+
+
 	<tds:CSSLink href="~/Scripts/Libraries/yahoo/yui2/build/menu/assets/skins/sam/menu.css" rel="stylesheet" type="text/css" />
 	<tds:CSSLink href="~/Scripts/Libraries/yahoo/yui2/build/button/assets/skins/sam/button.css" rel="stylesheet" type="text/css" />
 	<tds:CSSLink href="~/Scripts/Libraries/yahoo/yui2/build/container/assets/skins/sam/container.css" rel="stylesheet" type="text/css" />
 	<tds:CSSLink href="~/Scripts/Libraries/yahoo/yui2/build/resize/assets/skins/sam/resize.css" rel="stylesheet" type="text/css" />
 
 	<!-- Shell Styles -->
-	<tds:CSSLink href="~/IrisStyles/Universal/frame.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/Universal/frame.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:CSSLink href="~/Shared/CSS/normalize.css" media="screen" type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/Universal/shell.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/Universal/shell.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:CSSLink href="~/Projects/SBAC/css/modernShell.css" media="screen" type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/dialogs.css" media="screen" type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/accommodations.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/dialogs.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/accommodations.css" media="screen" type="text/css" rel="stylesheet" />
 
 	<!-- Content Styles -->
-	<tds:CSSLink href="~/IrisStyles/items.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/items.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:CSSLink href="~/Shared/CSS/elpa.css" media="screen" type="text/css" rel="stylesheet" />
-	<tds:CSSLink href="~/IrisStyles/Universal/items.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink href="~/Shared/CSS/Universal/items.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:CSSLink href="~/Projects/SBAC/css/modernItems.css" media="screen" type="text/css" rel="stylesheet" />
 
 	<!-- Module Styles -->
-	<tds:CSSLink id="CSSLink1" href="~/IrisStyles/responserecovery.css" media="screen" type="text/css" rel="stylesheet" />
+	<tds:CSSLink id="CSSLink1" href="~/Scripts/ResponseRecovery/responserecovery.css" media="screen" type="text/css" rel="stylesheet" />
 
 	<!-- Widget Styles -->
 	<tds:CSSLink href="~/Scripts/Interaction/CSS/interaction.css" media="screen" type="text/css" rel="stylesheet" />
@@ -54,27 +55,49 @@
 	<tds:CSSLink href="~/Scripts/Moogle/CSS/moogle.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:CSSLink href="~/Scripts/Audio2/ClosedCaptioning.css" media="screen" type="text/css" rel="stylesheet" />
 
-
 	<!-- Blackbox Config -->
 	<script type="text/javascript">
-		var blackboxConfig = {
-			container : 'testShell',
-			preventShowOnLoad : true
-		};
+        var blackboxConfig = {
+            container : 'testShell',
+            preventShowOnLoad : true
+        };
 	</script>
-	<script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.min.js"></script>
 
 	<!-- Blackbox Seed -->
-	<!--<script type="text/javascript" src="#{itempreviewDefaultBacking.blackboxHandler}"></script>-->
-	<tds:ScriptLink type="text/javascript" source="~/Scripts/bundle.js" />
+	<tds:ScriptLink type="text/javascript" source="~/Scripts/iris.combined.min.js" />
 	<!-- Required by CTB -->
 
-	<tds:CSSLink href="~/IrisStyles/iris.css" media="screen" type="text/css" rel="stylesheet" />
 	<tds:ScriptLink source="~/Scripts/iris.js" type="text/javascript"></tds:ScriptLink>
-	<tds:ResourcesLink file="~/Scripts/scripts_iris.xml" name="sample" />
 
 </h:head>
 <h:body>
 	<div id="testShell"></div>
+
+
+
+<div id="dialogs">
+
+	<div id="loadingDialog">
+		<span class="border yui-panel"> <span class="container">Loading graphic</span>
+			<div id="loadingMessage" class="bd"></div>
+		</span>
+	</div>
+
+	<div id="dialogContent" class="">
+		<div class="dialogWrapper">
+			<div id="dialogContentHeader">
+				<span id="dialogContentTitle"></span> <span id="dialogContentClose"><a href="#" i18n-content="TestShell.Link.HelpGuide.Close"></a></span>
+			</div>
+
+			<div id="dialogContentFrames"></div>
+
+			<div id="dialogContentControls" class="">
+				<a class="greenBtn" href="#"><span i18n-content="TestShell.Link.CloseTutorial.Yes"></span></a> <a class="redBtn" href="#"><span i18n-content="TestShell.Link.CloseTutorial.No"></span></a> <span
+					class="clear"></span>
+			</div>
+		</div>
+	</div>
+
+</div>
 </h:body>
 </html>
