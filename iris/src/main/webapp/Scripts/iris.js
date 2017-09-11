@@ -400,7 +400,13 @@ This code implements the XDM API for use within item preview app.
 
     function setItemResponse(item, response) {
         if (item && item instanceof ContentItem) {
-            item.setResponse(response);
+            itemResponseReady(item)
+                .then(function(){
+                    item.setResponse(response)
+                })
+                .catch(function(err){
+                    console.error(err)
+                });
         } else {
             throw new Error('invalid item; could not set response');
         }
@@ -455,6 +461,24 @@ This code implements the XDM API for use within item preview app.
                 setItemLabel(itemFromPosition || itemFromId, itemResponse.label);
             }
         });
+    }
+
+    //Checks if item response can be set otherwise waits for fired widget instanceReady event
+    var itemResponseReady = function(item){
+        return new Promise(
+            function(resolve, reject){
+                if(item && CKEDITOR){
+                    if(item.isResponseAvailable()){
+                        resolve(true);
+                    }else{
+                        CKEDITOR.on('instanceReady', function(){
+                            resolve(true);});
+                    }
+                }else{
+                    reject('item and/or editor cannot be undefined');
+                }
+            }
+        );
     }
 
     function getResponse() {
