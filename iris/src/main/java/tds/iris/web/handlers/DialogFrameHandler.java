@@ -31,10 +31,13 @@ import tds.blackbox.ContentRequestParser;
 import tds.iris.abstractions.repository.IContentHelper;
 import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.ItemRenderGroup;
+import tds.itemrenderer.webcontrols.PageLayout;
 import tds.itemrenderer.webcontrols.rendererservlet.ContentRenderingException;
 import tds.blackbox.web.handlers.BaseContentRendererController;
 import AIR.Common.Json.JsonHelper;
 import AIR.Common.Web.Session.HttpContext;
+import tds.itemrenderer.webcontrols.rendererservlet.RendererServlet;
+
 /**
  * @author mpatel
  * 
@@ -49,9 +52,12 @@ public class DialogFrameHandler extends BaseContentRendererController
   @Autowired
   private IContentHelper _contentHelper;
 
+  @Autowired
+  private PageLayout _pageLayout;
+
   @RequestMapping (value = "DialogFrame.axd/getContent", produces = "application/xml")
   @ResponseBody
-  public void getDialogFrameContentsadf (
+  public String getDialogFrameContent (
           @RequestParam(value = "bankKey",
                   required = true)
                  long bankKey,
@@ -67,9 +73,11 @@ public class DialogFrameHandler extends BaseContentRendererController
       contentLanguage = "ENU";
     }
 
-    String id = "Page-" + UUID.randomUUID().toString();
     ItemRenderGroup itemRenderGroup = _contentHelper.loadTutorial(bankKey, itemKey, contentLanguage);
-    renderGroup (itemRenderGroup, new AccLookup(), response);
+    _pageLayout.setItemRenderGroup(itemRenderGroup);
+    RendererServlet.getRenderedOutput (_pageLayout);
+
+    return _pageLayout.getRenderToString ();
 
   }
 
