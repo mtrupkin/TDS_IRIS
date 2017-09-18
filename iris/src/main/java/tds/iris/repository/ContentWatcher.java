@@ -1,6 +1,7 @@
 package tds.iris.repository;
 
 
+import AIR.Common.Configuration.AppSettingsHelper;
 import AIR.Common.Utilities.SpringApplicationContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +11,7 @@ import tds.iris.abstractions.repository.IContentHelper;
 
 import java.io.IOException;
 import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 
 import static java.nio.file.StandardWatchEventKinds.*;
 @Component
@@ -30,24 +32,38 @@ public class ContentWatcher extends Thread{
         }
     }
 
-    private WatchService createWatcher() throws Exception {
-        WatchService watcher = null;
-        //create watcher to watch file directory for changes
+    //create watcher to watch file directory for changes
+    private WatchService createWatcher(String root) throws Exception {
+        Path itemsPath = Paths.get(root, "Items");
+        Path stimuliPath = Paths.get(root, "Stimuli");
         try {
-            watcher = FileSystems.getDefault().newWatchService();
+            final WatchService watcher = FileSystems.getDefault().newWatchService();
+            Files.walkFileTree(itemsPath, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                    dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+            Files.walkFileTree(stimuliPath, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                    dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+
+            return watcher;
         } catch (IOException e) {
-            e.printStackTrace();
+            _logger.warn(e.getMessage());
+            throw e;
         }
-
-        Path dir = Paths.get("C:\\content\\Items");
-        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE);
-
-
-        return watcher;
     }
 
     public void watchForChange() throws Exception {
-        WatchService watcher = createWatcher();
+        String irisPath = AppSettingsHelper.get("iris.ContentPath");
+
+        WatchService watcher = createWatcher(irisPath);
         //create infinite while loop to track changes in the directory
         while(true){
             WatchKey key = null;
@@ -62,9 +78,33 @@ public class ContentWatcher extends Thread{
                 Path dir = (Path)key.watchable();
                 if(event.kind() == ENTRY_CREATE){
                     Path fullPath = dir.resolve(event.context().toString());
+                    if(Files.isDirectory(fullPath)){
+                        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+                        _logger.info("Watch content add: " + fullPath.toString());
+                    }else{
+                        fullPath = fullPath.getParent();
+                        _logger.info("Watch content updating parent: " + fullPath.toString());
+                    }
                     _contentHelper.addFile(fullPath.toString());
+
                 } else if(event.kind() == ENTRY_DELETE) {
-                    _contentHelper.removeFile(event.context().toString());
+                    String dirDeleted = event.context().toString();
+                    Path fullPath = dir.resolve(event.context().toString());
+                    if(Files.isDirectory(fullPath)){
+                        _logger.info("Watch content removing: " + fullPath.toString());
+                        _contentHelper.removeFile(dirDeleted);
+                    }else{
+                        fullPath = fullPath.getParent();
+                        _logger.info("Watch content updating parent: " + fullPath.toString());
+                        _contentHelper.addFile(fullPath.toString());
+                    }
+
+                } else if(event.kind() == ENTRY_MODIFY) {
+                    Path fullPath = dir.resolve(event.context().toString());
+                    if(!Files.isDirectory(fullPath)){
+                        _logger.info("Watch content updated: " + fullPath.toString());
+                        _contentHelper.addFile(fullPath.getParent().toString());
+                    }
                 }
             }
 
