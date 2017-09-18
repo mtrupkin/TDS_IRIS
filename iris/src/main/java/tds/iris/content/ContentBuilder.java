@@ -32,10 +32,7 @@ import tds.iris.abstractions.repository.ContentException;
 import tds.iris.abstractions.repository.IContentBuilder;
 import tds.itempreview.ConfigBuilder;
 import tds.itempreview.Content;
-import tds.itemrenderer.data.AccLookup;
-import tds.itemrenderer.data.IITSDocument;
-import tds.itemrenderer.data.IrisITSDocument;
-import tds.itemrenderer.data.ItsItemIdUtil;
+import tds.itemrenderer.data.*;
 import tds.itemrenderer.data.ITSTypes.ITSEntityType;
 
 import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
@@ -64,11 +61,38 @@ public class ContentBuilder implements IContentBuilder {
     //add a new file to the directory
     public synchronized void loadFile(String fileName) {
         _contentPath = fileName;
+        try{
+            String id = getId(fileName);
+            IrisITSDocument document = _directoryScanner.getDocumentRepresentation(id);
+            if(document != null){
+                removeFile(fileName);
+            }
+
+        }catch(Exception e){
+            //does not exist. continue
+        }
+
         try {
             _directoryScanner.addFile(_contentPath);
         } catch (Exception e) {
             _logger.error("Error loading IRiS content.", e);
             throw new ContentException(e);
+        }
+    }
+
+    private String getId(String fileName) throws Exception {
+        String prefix = "";
+        if(fileName.contains("Item")) {
+            prefix = "i";
+        } else if(fileName.contains("stim")) {
+            prefix = "p";
+        }
+
+        String[] parts = fileName.split("-");
+        if(parts.length == 3) {
+            return prefix + "-" + parts[1] + "-" + parts[2];
+        } else {
+            throw new Exception("invalid key");
         }
     }
 
