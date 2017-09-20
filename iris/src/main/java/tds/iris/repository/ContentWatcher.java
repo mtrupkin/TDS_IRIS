@@ -63,7 +63,7 @@ public class ContentWatcher extends Thread{
     public void watchForChange() throws Exception {
         String irisPath = AppSettingsHelper.get("iris.ContentPath");
 
-        WatchService watcher = createWatcher(irisPath);
+        final WatchService watcher = createWatcher(irisPath);
         //create infinite while loop to track changes in the directory
         while(true){
             WatchKey key = null;
@@ -79,7 +79,17 @@ public class ContentWatcher extends Thread{
                 if(event.kind() == ENTRY_CREATE){
                     Path fullPath = dir.resolve(event.context().toString());
                     if(Files.isDirectory(fullPath)){
-                        dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+                        try{
+                            Files.walkFileTree(dir, new SimpleFileVisitor<Path>() {
+                                @Override
+                                public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                                    dir.register(watcher, ENTRY_CREATE, ENTRY_DELETE, ENTRY_MODIFY);
+                                    return FileVisitResult.CONTINUE;
+                                }
+                            });
+                        }catch(Exception e){
+                            _logger.warn("Could not register directory " + fullPath.toString());
+                        }
                         _logger.info("Watch content add: " + fullPath.toString());
                     }else{
                         fullPath = fullPath.getParent();
@@ -88,22 +98,26 @@ public class ContentWatcher extends Thread{
                     _contentHelper.addFile(fullPath.toString());
 
                 } else if(event.kind() == ENTRY_DELETE) {
-                    String dirDeleted = event.context().toString();
+                    Path path = dir.toAbsolutePath();
+                    String pathLocation = path.toString();
                     Path fullPath = dir.resolve(event.context().toString());
-                    if(Files.isDirectory(fullPath)){
+
+                    if(path.endsWith("Items") || path.endsWith("Stimuli")){
                         _logger.info("Watch content removing: " + fullPath.toString());
-                        _contentHelper.removeFile(dirDeleted);
-                    }else{
-                        fullPath = fullPath.getParent();
-                        _logger.info("Watch content updating parent: " + fullPath.toString());
-                        _contentHelper.addFile(fullPath.toString());
+                        _contentHelper.removeFile(fullPath.toString());
+                    }else if(!Files.isDirectory(fullPath) && Files.isDirectory(path)){
+                        _logger.info("Watch content updating parent: " + pathLocation);
+                        _contentHelper.addFile(pathLocation);
                     }
 
                 } else if(event.kind() == ENTRY_MODIFY) {
                     Path fullPath = dir.resolve(event.context().toString());
                     if(!Files.isDirectory(fullPath)){
-                        _logger.info("Watch content updated: " + fullPath.toString());
-                        _contentHelper.addFile(fullPath.getParent().toString());
+                        fullPath = fullPath.getParent();
+                        if(Files.isDirectory(fullPath)){
+                            _logger.info("Watch content updated: " + fullPath.toString());
+                            _contentHelper.addFile(fullPath.toString());
+                        }
                     }
                 }
             }
