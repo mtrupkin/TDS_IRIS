@@ -33,6 +33,12 @@ deploy:
     script: ./DeployScripts/app_docker_deploy.sh
     on:
       tags: true
+  - provider: releases
+    api_key: $GIT_API_KEY
+    file: docker/iris.war
+    skip_cleanup: true
+    on:
+      tags: true
   - provider: script
     skip_cleanup: true
     script: ./DeployScripts/app_docker_deploy.sh
