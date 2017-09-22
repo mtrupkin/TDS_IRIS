@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,7 @@ import tds.blackbox.ContentRequestException;
 import tds.blackbox.ContentRequestParser;
 import tds.itemrenderer.data.AccLookup;
 import tds.itemrenderer.data.ItemRenderGroup;
+import tds.itemrenderer.repository.ContentRepository;
 import tds.itemrenderer.webcontrols.rendererservlet.ContentRenderingException;
 import tds.blackbox.web.handlers.BaseContentRendererController;
 import AIR.Common.Json.JsonHelper;
@@ -37,6 +39,12 @@ import AIR.Common.Web.Session.HttpContext;
 public class BlackBoxRequestHandler extends BaseContentRendererController
 {
   private static final Logger _logger = LoggerFactory.getLogger (BlackBoxRequestHandler.class);
+  ContentRepository contentRepository;
+
+  @Autowired
+  public BlackBoxRequestHandler(ContentRepository contentRepository) {
+    this.contentRepository = contentRepository;
+  }
 
   // Controller starts here
   @RequestMapping (value = "ContentRequest.axd/load", produces = "application/xml")
@@ -69,7 +77,7 @@ public class BlackBoxRequestHandler extends BaseContentRendererController
     }
     AccLookup accLookup = ContentRequestParser.createAccommodations (contentRequest);
 
-    ItemRenderGroup itemRenderGroup = ContentRequestParser.createPageLayout (contentRequest);
+    ItemRenderGroup itemRenderGroup = ContentRequestParser.createPageLayout(contentRepository, contentRequest);
 
     // Shiva: This is where our implementation differs from .NET.
     // In .NET the IRIS method of populating PageLayout is different than the
